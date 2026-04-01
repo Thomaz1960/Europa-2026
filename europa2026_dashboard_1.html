@@ -308,67 +308,21 @@ body { font-family:'Nunito',sans-serif; background:var(--cream); color:var(--ink
     <div class="sec-title">✈️ Voos & Transfers</div>
     <div class="sec-sub" id="voosSub">Sincronize para ver datas, horários e números de voo em tempo real</div>
 
-    <div class="voos-section-label">✈️ Voos Aéreos</div>
+    <div id="voosAereoLabel" class="voos-section-label">✈️ Voos Aéreos</div>
     <div class="voos-grid" id="voosGridAereo">
-
-      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info">
-        <div class="voo-name">Manaus → Barcelona</div>
-        <div class="voo-datas">
-          <div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>TP 52</strong> &nbsp;·&nbsp; 22 mai · 16h55</span></div>
-          <div class="voo-data-row escala-row"><span class="voo-data-label">🔁 Escala</span><span class="voo-data-val escala"><strong>TP1036</strong> &nbsp;·&nbsp; 23 mai · 16h30 <span class="espera-badge">⏱ 23h35min de espera</span></span></div>
-        </div>
-      </div><div class="voo-badge badge-ok">Confirmado</div></div>
-
-      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info">
-        <div class="voo-name">Barcelona → Roma</div>
-        <div class="voo-datas">
-          <div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>FR6973</strong> &nbsp;·&nbsp; 26 mai · 10h55</span></div>
-        </div>
-      </div><div class="voo-badge badge-ok">Confirmado</div></div>
-
-      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info">
-        <div class="voo-name">Milão → Paris</div>
-        <div class="voo-datas">
-          <div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>TO3941</strong> &nbsp;·&nbsp; 04 jun · 15h30</span></div>
-        </div>
-      </div><div class="voo-badge badge-ok">Confirmado</div></div>
-
-      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info">
-        <div class="voo-name">Paris → Barcelona</div>
-        <div class="voo-datas">
-          <div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>AF1548</strong> &nbsp;·&nbsp; 07 jun · 15h20</span></div>
-        </div>
-      </div><div class="voo-badge badge-ok">Confirmado</div></div>
-
-      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info">
-        <div class="voo-name">Barcelona → Manaus</div>
-        <div class="voo-datas">
-          <div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>TP1041</strong> &nbsp;·&nbsp; 08 jun · 06h00</span></div>
-          <div class="voo-data-row escala-row"><span class="voo-data-label">🔁 Escala</span><span class="voo-data-val escala"><strong>TP51</strong> &nbsp;·&nbsp; 08 jun · 11h00 <span class="espera-badge">⏱ 5h de espera</span></span></div>
-        </div>
-      </div><div class="voo-badge badge-ok">Confirmado</div></div>
-
+      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Manaus → Barcelona</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>TP 52</strong> · 22 mai · 16h55</span></div><div class="voo-data-row escala-row"><span class="voo-data-label">🔁 Escala</span><span class="voo-data-val escala"><strong>TP1036</strong> · 23 mai · 16h30 <span class="espera-badge">⏱ 23h35min de espera</span></span></div></div></div><div class="voo-badge badge-ok">Confirmado</div></div>
+      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Barcelona → Roma</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>FR6973</strong> · 26 mai · 10h55</span></div></div></div><div class="voo-badge badge-ok">Confirmado</div></div>
+      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Milão → Paris</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>TO3941</strong> · 04 jun · 15h30</span></div></div></div><div class="voo-badge badge-ok">Confirmado</div></div>
+      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Paris → Barcelona</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>AF1548</strong> · 07 jun · 15h20</span></div></div></div><div class="voo-badge badge-ok">Confirmado</div></div>
+      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Barcelona → Manaus</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>TP1041</strong> · 08 jun · 06h00</span></div><div class="voo-data-row escala-row"><span class="voo-data-label">🔁 Escala</span><span class="voo-data-val escala"><strong>TP51</strong> · 08 jun · 11h00 <span class="espera-badge">⏱ 5h de espera</span></span></div></div></div><div class="voo-badge badge-ok">Confirmado</div></div>
     </div>
 
-    <div class="voos-section-label" style="margin-top:20px;">🚗 Outros Transfers</div>
+    <div id="voosTransferLabel" class="voos-section-label" style="margin-top:20px;">🚗 Outros Transfers</div>
     <div class="voos-grid" id="voosGridTransfer">
-      <div class="voo-card pend"><div class="voo-icon">🚆</div><div class="voo-info">
-        <div class="voo-name">Trem Roma → Positano</div>
-        <div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">📅 Data</span><span class="voo-data-val">29 mai</span></div></div>
-      </div><div class="voo-badge badge-pend">Pendente</div></div>
-
-      <div class="voo-card pend"><div class="voo-icon">🚗</div><div class="voo-info">
-        <div class="voo-name">Carro — Amalfi → Toscana</div>
-        <div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">📅 Data</span><span class="voo-data-val">02 jun</span></div></div>
-      </div><div class="voo-badge badge-pend">Pendente</div></div>
-
-      <div class="voo-card pend"><div class="voo-icon">🚗</div><div class="voo-info">
-        <div class="voo-name">Carro — Toscana → Milão (devolução)</div>
-        <div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">📅 Data</span><span class="voo-data-val">04 jun</span></div></div>
-      </div><div class="voo-badge badge-pend">Pendente</div></div>
+      <div class="voo-card pend"><div class="voo-icon">🚆</div><div class="voo-info"><div class="voo-name">Trem Roma → Positano</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">📅 Data</span><span class="voo-data-val">29 mai</span></div></div></div><div class="voo-badge badge-pend">Pendente</div></div>
+      <div class="voo-card pend"><div class="voo-icon">🚗</div><div class="voo-info"><div class="voo-name">Carro — Amalfi → Toscana</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">📅 Data</span><span class="voo-data-val">02 jun</span></div></div></div><div class="voo-badge badge-pend">Pendente</div></div>
+      <div class="voo-card pend"><div class="voo-icon">🚗</div><div class="voo-info"><div class="voo-name">Carro — Toscana → Milão</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">📅 Data</span><span class="voo-data-val">04 jun</span></div></div></div><div class="voo-badge badge-pend">Pendente</div></div>
     </div>
-
-    <p style="font-size:11px;color:#aaa;margin-top:14px;text-align:center;">⚡ Sincronize com o ClickUp para atualizar datas e horários em tempo real</p>
   </div>
 
   <!-- CHECKLIST -->
@@ -672,15 +626,25 @@ function renderVoos(aereo, transfers){
   document.getElementById('st1').textContent     = `${okVoos}/${aereo.length} voos confirmados`;
   document.getElementById('st2').textContent     = `${pendTransf} transfers pendentes`;
 
-  // Popular grid aéreo e transfer separados
-  const aereoHtml = aereoSort.map((t, i) => makeVooCard(t, i)).join('');
-  const transferHtml = transferSort.map((t, i) => makeVooCard(t, i + aereoSort.length)).join('');
-  const gridAereo = document.getElementById('voosGridAereo');
+  // Popular grids com dados do ClickUp
+  const gridAereo    = document.getElementById('voosGridAereo');
   const gridTransfer = document.getElementById('voosGridTransfer');
-  const gridLegacy = document.getElementById('voosGrid');
-  if(gridAereo) gridAereo.innerHTML = aereoHtml || '<div class="voo-card pend"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Nenhum voo encontrado</div></div></div>';
-  if(gridTransfer) gridTransfer.innerHTML = transferHtml || '<div class="voo-card pend"><div class="voo-icon">🚌</div><div class="voo-info"><div class="voo-name">Nenhum transfer encontrado</div></div></div>';
-  if(gridLegacy && !gridAereo) gridLegacy.innerHTML = [...aereoSort,...transferSort].map((t,i) => makeVooCard(t,i)).join('');
+
+  if(gridAereo) {
+    const html = aereoSort.map((t, i) => makeVooCard(t, i)).join('');
+    gridAereo.innerHTML = html || '<div class="voo-card pend"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Nenhum voo encontrado</div></div></div>';
+    console.log('voosGridAereo atualizado com', aereoSort.length, 'cards');
+  } else {
+    console.warn('voosGridAereo não encontrado no DOM!');
+  }
+
+  if(gridTransfer) {
+    const html = transferSort.map((t, i) => makeVooCard(t, i)).join('');
+    gridTransfer.innerHTML = html || '<div class="voo-card pend"><div class="voo-icon">🚌</div><div class="voo-info"><div class="voo-name">Nenhum transfer encontrado</div></div></div>';
+    console.log('voosGridTransfer atualizado com', transferSort.length, 'cards');
+  } else {
+    console.warn('voosGridTransfer não encontrado no DOM!');
+  }
 }
 
 function makeVooCard(t, i) {
