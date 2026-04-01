@@ -97,6 +97,7 @@ body { font-family:'Nunito',sans-serif; background:var(--cream); color:var(--ink
 .voo-nums { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:6px; }
 .escala-row { background:#fffbf0; border-radius:6px; padding:3px 5px; margin:-1px 0; }
 .espera-badge { display:inline-block; background:#fff3cd; color:#856404; border-radius:10px; padding:1px 7px; font-size:10px; font-weight:700; margin-left:6px; white-space:nowrap; }
+.voos-section-label { font-size:11px; font-weight:700; color:#888; text-transform:uppercase; letter-spacing:.1em; margin-bottom:10px; }
 
 /* CHECKLIST */
 .check-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px; }
@@ -191,16 +192,6 @@ body { font-family:'Nunito',sans-serif; background:var(--cream); color:var(--ink
 <div class="wrap">
   <div class="err-box" id="errBox"></div>
   <div class="update-badge">📋 <span id="badgeText">Versão de <strong id="genDate"></strong> — sincronize com o ClickUp para atualizar em tempo real.</span></div>
-
-  <!-- VOOS -->
-  <div class="section">
-    <div class="sec-title">✈️ Voos & Transfers</div>
-    <div class="sec-sub" id="voosSub">Status de todos os deslocamentos</div>
-    <div style="font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">✈️ Voos Aéreos</div>
-    <div class="voos-grid" id="voosGrid">
-      <div class="voo-card pend"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Sincronize para ver os voos</div><div class="voo-detail">Cole o token ClickUp acima</div></div><div class="voo-badge badge-pend">Aguardando</div></div>
-    </div>
-  </div>
 
   <!-- DESTINOS -->
   <div class="section">
@@ -312,20 +303,69 @@ body { font-family:'Nunito',sans-serif; background:var(--cream); color:var(--ink
     </div>
   </div>
 
-  <!-- VOOS -->
+  <!-- VOOS & TRANSFERS -->
   <div class="section">
     <div class="sec-title">✈️ Voos & Transfers</div>
-    <div class="sec-sub" id="voosSub">Status de todos os deslocamentos</div>
-    <div class="voos-grid" id="voosGrid">
-      <!-- Dados padrão — atualizados via ClickUp -->
-      <div class="voo-card ok" style="animation-delay:.04s"><div class="voo-icon">✅</div><div class="voo-info"><div class="voo-name">Manaus → Barcelona</div><div class="voo-detail">22 de maio · início da viagem</div></div><div class="voo-badge badge-ok">Confirmado</div></div>
-      <div class="voo-card ok" style="animation-delay:.07s"><div class="voo-icon">✅</div><div class="voo-info"><div class="voo-name">Barcelona → Roma</div><div class="voo-detail">Ryanair · R6QM4U · 26 mai</div></div><div class="voo-badge badge-ok">Confirmado</div></div>
-      <div class="voo-card pend" style="animation-delay:.10s"><div class="voo-icon">⏳</div><div class="voo-info"><div class="voo-name">Trem Roma → Positano</div><div class="voo-detail">29 de maio</div></div><div class="voo-badge badge-pend">Pendente</div></div>
-      <div class="voo-card pend" style="animation-delay:.13s"><div class="voo-icon">🚗</div><div class="voo-info"><div class="voo-name">Carro — Amalfi → Toscana</div><div class="voo-detail">Alugar em Salerno · 2 jun</div></div><div class="voo-badge badge-pend">Pendente</div></div>
-      <div class="voo-card ok" style="animation-delay:.16s"><div class="voo-icon">✅</div><div class="voo-info"><div class="voo-name">Milão → Paris</div><div class="voo-detail">Transavia · OG2FSD · 4 jun</div></div><div class="voo-badge badge-ok">Confirmado</div></div>
-      <div class="voo-card ok" style="animation-delay:.19s"><div class="voo-icon">✅</div><div class="voo-info"><div class="voo-name">Paris → Barcelona</div><div class="voo-detail">Air France · YMJJBS · 8 jun</div></div><div class="voo-badge badge-ok">Confirmado</div></div>
-      <div class="voo-card ok" style="animation-delay:.22s"><div class="voo-icon">✅</div><div class="voo-info"><div class="voo-name">Barcelona → Manaus</div><div class="voo-detail">8 de junho · retorno</div></div><div class="voo-badge badge-ok">Confirmado</div></div>
+    <div class="sec-sub" id="voosSub">Sincronize para ver datas, horários e números de voo em tempo real</div>
+
+    <div class="voos-section-label">✈️ Voos Aéreos</div>
+    <div class="voos-grid" id="voosGridAereo">
+      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info">
+        <div class="voo-name">Manaus → Barcelona · <span style="color:#3a6fa8">TP 52</span></div>
+        <div class="voo-datas">
+          <div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>TP 52</strong> · 22 mai · 21h45</span></div>
+          <div class="voo-data-row escala-row"><span class="voo-data-label">🔁 Escala</span><span class="voo-data-val escala"><strong>TP1036</strong> · 23 mai · 09h10 <span class="espera-badge">⏱ 11h25min de espera</span></span></div>
+        </div>
+      </div><div class="voo-badge badge-ok">Confirmado</div></div>
+
+      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info">
+        <div class="voo-name">Barcelona → Roma · <span style="color:#3a6fa8">FR6973</span></div>
+        <div class="voo-datas">
+          <div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>FR6973</strong> · 26 mai · 06h15</span></div>
+        </div>
+      </div><div class="voo-badge badge-ok">Confirmado</div></div>
+
+      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info">
+        <div class="voo-name">Milão → Paris · <span style="color:#3a6fa8">TO3941</span></div>
+        <div class="voo-datas">
+          <div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>TO3941</strong> · 04 jun · 07h10</span></div>
+        </div>
+      </div><div class="voo-badge badge-ok">Confirmado</div></div>
+
+      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info">
+        <div class="voo-name">Paris → Barcelona · <span style="color:#3a6fa8">AF1548</span></div>
+        <div class="voo-datas">
+          <div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>AF1548</strong> · 08 jun · 10h00</span></div>
+        </div>
+      </div><div class="voo-badge badge-ok">Confirmado</div></div>
+
+      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info">
+        <div class="voo-name">Barcelona → Manaus · retorno</div>
+        <div class="voo-datas">
+          <div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val">08 jun</span></div>
+        </div>
+      </div><div class="voo-badge badge-ok">Confirmado</div></div>
     </div>
+
+    <div class="voos-section-label" style="margin-top:20px;">🚗 Outros Transfers</div>
+    <div class="voos-grid" id="voosGridTransfer">
+      <div class="voo-card pend"><div class="voo-icon">🚆</div><div class="voo-info">
+        <div class="voo-name">Trem Roma → Positano</div>
+        <div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">📅 Data</span><span class="voo-data-val">29 mai</span></div></div>
+      </div><div class="voo-badge badge-pend">Pendente</div></div>
+
+      <div class="voo-card pend"><div class="voo-icon">🚗</div><div class="voo-info">
+        <div class="voo-name">Carro — Amalfi → Toscana</div>
+        <div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">📅 Data</span><span class="voo-data-val">02 jun</span></div></div>
+      </div><div class="voo-badge badge-pend">Pendente</div></div>
+
+      <div class="voo-card pend"><div class="voo-icon">🚗</div><div class="voo-info">
+        <div class="voo-name">Carro — Toscana → Milão (devolução)</div>
+        <div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">📅 Data</span><span class="voo-data-val">04 jun</span></div></div>
+      </div><div class="voo-badge badge-pend">Pendente</div></div>
+    </div>
+
+    <p style="font-size:11px;color:#aaa;margin-top:14px;text-align:center;">⚡ Sincronize com o ClickUp para atualizar datas e horários em tempo real</p>
   </div>
 
   <!-- CHECKLIST -->
@@ -609,7 +649,20 @@ function renderVoos(aereo, transfers){
   document.getElementById('st1').textContent     = `${okVoos}/${aereo.length} voos confirmados`;
   document.getElementById('st2').textContent     = `${pendTransf} transfers pendentes`;
 
-  document.getElementById('voosGrid').innerHTML = all.map((t, i) => {
+  // Popular grid aéreo e transfer separados
+  const aereoHtml = aereoSort.map((t, i) => makeVooCard(t, i)).join('');
+  const transferHtml = transferSort.map((t, i) => makeVooCard(t, i + aereoSort.length)).join('');
+  const gridAereo = document.getElementById('voosGridAereo');
+  const gridTransfer = document.getElementById('voosGridTransfer');
+  const gridLegacy = document.getElementById('voosGrid');
+  if(gridAereo) gridAereo.innerHTML = aereoHtml || '<div class="voo-card pend"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Nenhum voo encontrado</div></div></div>';
+  if(gridTransfer) gridTransfer.innerHTML = transferHtml || '<div class="voo-card pend"><div class="voo-icon">🚌</div><div class="voo-info"><div class="voo-name">Nenhum transfer encontrado</div></div></div>';
+  if(gridLegacy && !gridAereo) gridLegacy.innerHTML = [...aereoSort,...transferSort].map((t,i) => makeVooCard(t,i)).join('');
+}
+
+function makeVooCard(t, i) {
+  const done  = isDone(t);
+  const nome  = t.name.toLowerCase();
     const done = isDone(t);
     const nome = t.name.toLowerCase();
 
@@ -695,16 +748,16 @@ function renderVoos(aereo, transfers){
 
     const nomeClean = t.name.replace(/^(VOO|TREM|CARRO)\s*[-–]\s*/i, '');
 
-    return `${separador}<div class="voo-card ${done?'ok':'pend'}" style="animation-delay:${i*0.04}s">
-      <div class="voo-icon">${icon}</div>
-      <div class="voo-info">
-        <div class="voo-name">${nomeClean}</div>
-        ${tipoHtml ? `<div class="voo-nums">${tipoHtml}</div>` : ''}
-        <div class="voo-datas">${datasHtml}</div>
-      </div>
-      <div class="voo-badge ${done?'badge-ok':'badge-pend'}">${done?'Confirmado':'Pendente'}</div>
-    </div>`;
-  }).join('');
+  const nomeClean = t.name.replace(/^(VOO|TREM|CARRO)\s*[-–]\s*/i, '');
+  return `<div class="voo-card ${done?'ok':'pend'}" style="animation-delay:${i*0.04}s">
+    <div class="voo-icon">${icon}</div>
+    <div class="voo-info">
+      <div class="voo-name">${nomeClean}</div>
+      ${tipoHtml ? `<div class="voo-nums">${tipoHtml}</div>` : ''}
+      <div class="voo-datas">${datasHtml}</div>
+    </div>
+    <div class="voo-badge ${done?'badge-ok':'badge-pend'}">${done?'Confirmado':'Pendente'}</div>
+  </div>`;
 }
 
 // ── Main sync ─────────────────────────────────────────────────────────────────
