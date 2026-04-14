@@ -3,830 +3,998 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Europa 2026 — Leite, Abrego, Araujo & Nogueira</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Europe 2026 · by Tototur</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-:root {
-  --ink:#1c1c2e; --cream:#fdf9f3; --warm:#f7f0e6;
-  --gold:#c9973a; --ok:#27ae60; --pend:#e74c3c;
-  --shadow:0 4px 24px rgba(28,28,46,.08);
-  --shadow-lg:0 8px 40px rgba(28,28,46,.14);
-}
-body { font-family:'Nunito',sans-serif; background:var(--cream); color:var(--ink); min-height:100vh; }
+  :root {
+    --cream: #f5f0e8;
+    --warm: #ede5d4;
+    --terracotta: #c4623a;
+    --gold: #c8a84b;
+    --olive: #6b7c3e;
+    --ink: #1a1410;
+    --mist: #7a7060;
+    --confirmed: #30a46c;
+    --pending: #e05252;
+    --suggestion: #c8a84b;
+  }
 
-/* HERO */
-.hero { background:linear-gradient(135deg,#1c1c2e 0%,#2d2d4e 50%,#1a2a4a 100%); color:white; padding:44px 32px 36px; text-align:center; position:relative; overflow:hidden; }
-.hero::before { content:'✈'; position:absolute; font-size:280px; opacity:.03; top:-40px; right:-20px; line-height:1; pointer-events:none; }
-.hero-eyebrow { font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; font-weight:600; }
-.hero-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,5vw,3.2rem); font-weight:700; line-height:1.1; margin-bottom:8px; }
-.hero-sub { font-size:14px; opacity:.55; margin-bottom:22px; font-weight:300; }
-.hero-badges { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:22px; }
-.hero-badge { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:30px; padding:6px 14px; font-size:12px; font-weight:600; }
-.countdown-hero { display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); border-radius:60px; padding:11px 26px; font-size:14px; font-weight:600; }
-.countdown-hero strong { font-family:'Playfair Display',serif; font-size:2.1rem; color:var(--gold); line-height:1; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-/* TOKEN BAR */
-.token-bar { background:#12121f; padding:12px 24px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; border-bottom:1px solid #2a2a3e; }
-.token-bar label { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); white-space:nowrap; font-weight:600; }
-.token-bar input { flex:1; min-width:200px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); color:white; padding:8px 12px; font-family:'Nunito',sans-serif; font-size:12px; border-radius:6px; outline:none; transition:border-color .2s; }
-.token-bar input:focus { border-color:var(--gold); }
-.token-bar input::placeholder { opacity:.3; }
-.btn-sync { background:var(--ok); color:white; border:none; padding:9px 20px; font-family:'Nunito',sans-serif; font-size:12px; font-weight:700; border-radius:6px; cursor:pointer; white-space:nowrap; transition:all .2s; letter-spacing:.04em; }
-.btn-sync:hover { background:#219a52; transform:translateY(-1px); }
-.btn-sync:disabled { background:#444; cursor:not-allowed; transform:none; }
-.sync-info { font-size:10px; color:rgba(255,255,255,.3); }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
 
-/* ROUTE BAR */
-.route-bar { background:var(--ink); padding:13px 16px; display:flex; justify-content:center; align-items:center; gap:5px; flex-wrap:wrap; }
-.route-city { font-size:11px; font-weight:700; color:white; text-align:center; }
-.route-flag { font-size:15px; }
-.route-arr { color:rgba(255,255,255,.25); font-size:13px; }
-.route-date { font-size:9px; color:var(--gold); display:block; font-weight:400; margin-top:1px; }
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 80%, rgba(196,98,58,.35) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 20%, rgba(200,168,75,.2) 0%, transparent 55%),
+      radial-gradient(ellipse 100% 100% at 50% 50%, #1a1410 40%, #2a1f16 100%);
+  }
+  .hero-texture {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; padding: 2rem;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: .7rem; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp .8s .3s ease forwards;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 900; line-height: .88; color: var(--cream);
+    margin-bottom: .6rem;
+    opacity: 0; animation: fadeUp .9s .5s ease forwards;
+  }
+  .hero-title em { font-style: italic; color: var(--terracotta); display: block; }
+  .hero-brand {
+    font-family: 'DM Mono', monospace; font-size: .75rem;
+    letter-spacing: .25em; color: rgba(200,168,75,.5);
+    margin: 1rem 0 2rem;
+    opacity: 0; animation: fadeUp .9s .7s ease forwards;
+  }
+  .hero-dates {
+    display: inline-flex; gap: 1rem; align-items: center;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(200,168,75,.3);
+    padding: .65rem 1.6rem; border-radius: 100px;
+    font-family: 'DM Mono', monospace; font-size: .75rem;
+    letter-spacing: .1em; color: var(--gold); margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp .9s .9s ease forwards;
+  }
+  .hero-stats {
+    display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp .9s 1.1s ease forwards;
+  }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--terracotta); line-height: 1; }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .15em; color: var(--mist); text-transform: uppercase; margin-top: .2rem; }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: .5rem;
+    color: rgba(122,112,96,.5); font-size: .6rem; letter-spacing: .2em;
+    text-transform: uppercase; font-family: 'DM Mono', monospace;
+    opacity: 0; animation: fadeUp .9s 1.4s ease forwards;
+  }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2s 1.8s ease-in-out infinite; }
 
-/* STATUS BAR */
-.status-bar { background:#f0f7ff; border-bottom:1px solid #dde8f5; padding:11px 20px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
-.status-item { display:flex; align-items:center; gap:6px; font-size:12px; font-weight:600; }
-.status-dot { width:8px; height:8px; border-radius:50%; }
-.dot-ok{background:var(--ok)} .dot-pend{background:#bbb} .dot-warn{background:var(--gold)}
+  /* ── SYNC BAR ── */
+  .sync-bar {
+    background: var(--ink);
+    padding: .6rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+    font-family: 'DM Mono', monospace; font-size: .65rem;
+    color: rgba(245,240,232,.4); letter-spacing: .05em;
+    justify-content: space-between; flex-wrap: wrap;
+  }
+  .sync-bar-left { display: flex; align-items: center; gap: .7rem; }
+  .sync-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--confirmed); animation: pulse 2s ease-in-out infinite; }
+  .sync-dot.loading { background: var(--gold); }
+  .sync-dot.error { background: var(--pending); animation: none; }
+  .sync-time { color: var(--gold); }
+  .sync-btn {
+    font-family: 'DM Mono', monospace; font-size: .62rem;
+    letter-spacing: .08em; padding: .25rem .7rem;
+    border-radius: 100px; border: 1px solid rgba(200,168,75,.3);
+    background: transparent; color: var(--gold); cursor: pointer;
+    transition: all .2s;
+  }
+  .sync-btn:hover { background: var(--gold); color: var(--ink); }
+  .sync-btn:disabled { opacity: .4; cursor: not-allowed; }
 
-/* WRAP */
-.wrap { max-width:1100px; margin:0 auto; padding:28px 16px 56px; }
-.sec-title { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; margin-bottom:4px; }
-.sec-sub { font-size:13px; opacity:.45; margin-bottom:18px; }
-.section { margin-bottom:44px; }
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(245,240,232,.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(139,69,19,.1);
+    padding: .7rem 1.5rem;
+    display: flex; align-items: center; gap: .8rem; flex-wrap: wrap;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--terracotta); white-space: nowrap; margin-right: .5rem; }
+  .nav-tabs { display: flex; gap: .3rem; flex-wrap: wrap; flex: 1; }
+  .nav-tab {
+    font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .06em;
+    padding: .28rem .65rem; border-radius: 100px;
+    border: 1px solid rgba(139,69,19,.18); background: transparent;
+    color: var(--mist); cursor: pointer; transition: all .2s;
+    white-space: nowrap; text-decoration: none; display: inline-block;
+  }
+  .nav-tab:hover { background: rgba(196,98,58,.08); color: var(--terracotta); border-color: rgba(196,98,58,.3); }
+  .nav-tab.active { background: var(--terracotta); border-color: var(--terracotta); color: white; }
+  .nav-pending-btn {
+    font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .08em;
+    padding: .28rem .8rem; border-radius: 100px;
+    border: 1px solid rgba(224,82,82,.4); background: transparent;
+    color: var(--pending); cursor: pointer; transition: all .2s;
+    text-decoration: none; display: inline-block;
+  }
+  .nav-pending-btn:hover { background: var(--pending); color: white; }
 
-.update-badge { background:#fffbe6; border:1px solid #f0d060; border-radius:8px; padding:10px 16px; margin-bottom:22px; font-size:12px; color:#7a6010; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-.update-badge span { opacity:.7; }
+  /* ── MAIN ── */
+  main { max-width: 1060px; margin: 0 auto; padding: 4rem 1.5rem; }
 
-/* CITY CARDS */
-.city-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:18px; }
-.city-card { border-radius:16px; overflow:hidden; box-shadow:var(--shadow); background:white; transition:transform .2s,box-shadow .2s; animation:fadeUp .5s ease both; }
-.city-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
-.city-header { padding:18px 20px 14px; color:white; position:relative; overflow:hidden; }
-.city-header::after { content:attr(data-icon); position:absolute; right:14px; top:50%; transform:translateY(-50%); font-size:52px; opacity:.18; }
-.city-flag { font-size:20px; margin-bottom:5px; }
-.city-name { font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:700; }
-.city-dates { font-size:11px; opacity:.75; margin-top:2px; }
-.city-body { padding:14px 18px 18px; }
-.city-hosp { display:flex; align-items:center; gap:8px; padding:9px 11px; border-radius:10px; margin-bottom:12px; font-size:12px; font-weight:600; }
-.hosp-ok{background:#eafaf1;color:#1e8449} .hosp-pend{background:#fdf2e9;color:#ca6f1e} .hosp-loading{background:#f5f5f5;color:#888}
-.hosp-dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
-.city-acts { list-style:none; }
-.city-acts li { padding:5px 0; font-size:12px; border-bottom:1px solid #f0ece6; display:flex; align-items:flex-start; gap:7px; line-height:1.4; }
-.city-acts li:last-child { border:none; }
-.act-icon { flex-shrink:0; font-size:13px; margin-top:1px; }
+  /* ── SECTION LABELS ── */
+  .section-label { font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; margin-bottom: .5rem; }
+  .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 700; margin-bottom: 1.8rem; }
 
-/* VOOS */
-.voos-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px; }
-.voo-card { background:white; border-radius:14px; padding:16px 18px; box-shadow:var(--shadow); display:flex; gap:12px; align-items:flex-start; border-left:4px solid #e0e0e0; animation:fadeUp .5s ease both; transition:border-color .3s; }
-.voo-card.ok { border-left-color:var(--ok); }
-.voo-card.pend { border-left-color:#e0e0e0; }
-.voo-icon { font-size:22px; flex-shrink:0; margin-top:2px; }
-.voo-info { flex:1; min-width:0; }
-.voo-name { font-size:13px; font-weight:700; line-height:1.3; margin-bottom:6px; }
-.voo-detail { font-size:11px; opacity:.5; margin-top:2px; }
-.voo-badge { font-size:10px; font-weight:700; padding:3px 9px; border-radius:20px; text-transform:uppercase; letter-spacing:.06em; white-space:nowrap; align-self:flex-start; margin-top:2px; }
-.badge-ok{background:#eafaf1;color:#1e8449} .badge-pend{background:#f5f5f5;color:#888}
-.voo-datas { display:flex; flex-direction:column; gap:4px; margin-bottom:5px; }
-.voo-data-row { display:flex; align-items:center; gap:6px; font-size:12px; }
-.voo-data-label { font-size:10px; font-weight:700; color:#888; text-transform:uppercase; letter-spacing:.05em; min-width:52px; }
-.voo-data-val { font-weight:700; color:#1a2a4a; }
-.voo-data-val.escala { color:#c9973a; }
-.voo-num { display:inline-flex; align-items:center; gap:4px; background:#f0f4ff; border-radius:6px; padding:2px 7px; font-size:11px; font-weight:700; color:#3a6fa8; }
-.voo-nums { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:6px; }
-.escala-row { background:#fffbf0; border-radius:6px; padding:3px 5px; margin:-1px 0; }
-.espera-badge { display:inline-block; background:#fff3cd; color:#856404; border-radius:10px; padding:1px 7px; font-size:10px; font-weight:700; margin-left:6px; white-space:nowrap; }
-.voos-section-label { font-size:11px; font-weight:700; color:#888; text-transform:uppercase; letter-spacing:.1em; margin-bottom:10px; }
+  /* ── ROUTE BANNER ── */
+  .route-banner { background: var(--ink); border-radius: 14px; padding: 2rem; margin-bottom: 4rem; position: relative; overflow: hidden; }
+  .route-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 30% 50%, rgba(196,98,58,.18) 0%, transparent 70%); }
+  .route-banner-label { font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.2rem; position: relative; }
+  .route-cities { display: flex; align-items: center; flex-wrap: wrap; position: relative; }
+  .route-city { display: flex; flex-direction: column; align-items: center; gap: .35rem; padding: .4rem .6rem; transition: transform .2s; }
+  .route-city:hover { transform: translateY(-3px); }
+  .city-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--terracotta); border: 1.5px solid var(--gold); transition: all .2s; }
+  .route-city:hover .city-dot { background: var(--gold); transform: scale(1.4); }
+  .city-label { font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .08em; color: rgba(245,240,232,.55); white-space: nowrap; }
+  .route-arrow { color: rgba(200,168,75,.3); font-size: .75rem; padding-bottom: 1.4rem; }
 
-/* CHECKLIST */
-.check-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px; }
-.check-card { background:white; border-radius:14px; padding:16px 18px; box-shadow:var(--shadow); animation:fadeUp .5s ease both; }
-.check-title { font-size:13px; font-weight:700; margin-bottom:9px; display:flex; align-items:center; gap:8px; }
-.check-pct { font-size:10px; opacity:.4; margin-left:auto; }
-.check-progress { height:5px; background:#f0ece6; border-radius:3px; overflow:hidden; margin-bottom:10px; }
-.check-fill { height:100%; border-radius:3px; transition:width .8s ease; }
-.check-items { list-style:none; }
-.check-items li { font-size:12px; padding:5px 0; border-bottom:1px solid #f7f3ee; display:flex; gap:7px; line-height:1.4; color:#555; }
-.check-items li:last-child { border:none; }
-.check-circle { width:13px; height:13px; border-radius:50%; border:2px solid #ddd; flex-shrink:0; margin-top:2px; transition:all .3s; }
-.check-circle.done { background:var(--ok); border-color:var(--ok); }
-.check-items li.done-item { color:#aaa; text-decoration:line-through; }
+  /* ── LOADING STATE ── */
+  .loading-block {
+    background: var(--warm); border-radius: 10px;
+    padding: 2rem; text-align: center;
+    font-family: 'DM Mono', monospace; font-size: .75rem;
+    color: var(--mist); letter-spacing: .1em;
+    margin-bottom: 2rem;
+  }
+  .loading-spinner {
+    width: 24px; height: 24px; border: 2px solid rgba(196,98,58,.2);
+    border-top-color: var(--terracotta); border-radius: 50%;
+    animation: spin 1s linear infinite; margin: 0 auto 1rem;
+  }
+  .error-block {
+    background: rgba(224,82,82,.06);
+    border: 1px solid rgba(224,82,82,.2);
+    border-left: 4px solid var(--pending);
+    border-radius: 0 10px 10px 0;
+    padding: 1.2rem 1.4rem; margin-bottom: 2rem;
+    font-size: .85rem; line-height: 1.6;
+  }
+  .error-block strong { font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--pending); display: block; margin-bottom: .4rem; }
 
-/* DICAS */
-.dicas-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
-.dica-card { background:white; border-radius:14px; padding:16px 18px; box-shadow:var(--shadow); border-top:3px solid var(--gold); animation:fadeUp .5s ease both; }
-.dica-icon { font-size:22px; margin-bottom:7px; }
-.dica-title { font-size:13px; font-weight:700; margin-bottom:5px; }
-.dica-text { font-size:12px; color:#555; line-height:1.5; }
+  /* ── CONFIG PANEL ── */
+  .config-panel {
+    background: var(--ink); border-radius: 14px; padding: 2rem; margin-bottom: 3rem;
+    position: relative; overflow: hidden; display: none;
+  }
+  .config-panel.visible { display: block; }
+  .config-panel::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(200,168,75,.1) 0%, transparent 60%); }
+  .config-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--cream); margin-bottom: .3rem; position: relative; }
+  .config-sub { font-family: 'DM Mono', monospace; font-size: .65rem; color: rgba(245,240,232,.4); letter-spacing: .05em; margin-bottom: 1.5rem; position: relative; }
+  .config-form { display: grid; gap: 1rem; position: relative; }
+  .config-field label { font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .1em; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: .4rem; }
+  .config-field input {
+    width: 100%; background: rgba(255,255,255,.06);
+    border: 1px solid rgba(200,168,75,.2); border-radius: 8px;
+    padding: .6rem .9rem; color: var(--cream);
+    font-family: 'DM Mono', monospace; font-size: .78rem;
+    outline: none; transition: border-color .2s;
+  }
+  .config-field input:focus { border-color: rgba(200,168,75,.5); }
+  .config-field input::placeholder { color: rgba(245,240,232,.2); }
+  .config-hint { font-size: .72rem; color: rgba(245,240,232,.3); margin-top: .3rem; }
+  .config-actions { display: flex; gap: .7rem; margin-top: .5rem; }
+  .btn-primary {
+    font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .08em;
+    padding: .5rem 1.2rem; border-radius: 100px;
+    background: var(--terracotta); border: none; color: white;
+    cursor: pointer; transition: all .2s;
+  }
+  .btn-primary:hover { background: var(--rust); }
+  .btn-secondary {
+    font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .08em;
+    padding: .5rem 1.2rem; border-radius: 100px;
+    background: transparent; border: 1px solid rgba(200,168,75,.3); color: var(--gold);
+    cursor: pointer; transition: all .2s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); }
 
-/* LOADING / ERROR */
-.msg-box { text-align:center; padding:32px; font-size:13px; opacity:.5; }
-.err-box { background:#fdecea; border:1px solid #f5c6c6; border-radius:8px; padding:12px 16px; margin-bottom:16px; font-size:12px; color:#c0392b; display:none; }
+  /* ── FLIGHTS ── */
+  .flights-section { margin-bottom: 5rem; }
+  .flights-grid { display: grid; gap: 1px; background: rgba(139,69,19,.1); border: 1px solid rgba(139,69,19,.1); border-radius: 12px; overflow: hidden; }
+  .flight-card { background: var(--cream); padding: 1.2rem 1.4rem; display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: start; cursor: pointer; transition: background .18s; border-bottom: 1px solid rgba(139,69,19,.07); }
+  .flight-card:last-child { border-bottom: none; }
+  .flight-card:hover { background: var(--warm); }
+  .flight-card.expanded { background: var(--warm); }
+  .flight-date-col { display: flex; flex-direction: column; align-items: center; min-width: 52px; }
+  .flight-day { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--terracotta); line-height: 1; }
+  .flight-month { font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .1em; color: var(--mist); text-transform: uppercase; }
+  .flight-route { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: .3rem; display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+  .flight-arrow { color: var(--terracotta); font-size: .9rem; }
+  .flight-meta { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: .4rem; }
+  .flight-meta-item { font-family: 'DM Mono', monospace; font-size: .66rem; color: var(--mist); display: flex; align-items: center; gap: .3rem; }
+  .flight-meta-item strong { color: var(--ink); }
+  .flight-tags { display: flex; gap: .35rem; flex-wrap: wrap; }
+  .badge { font-family: 'DM Mono', monospace; font-size: .57rem; letter-spacing: .07em; padding: .18rem .55rem; border-radius: 100px; text-transform: uppercase; }
+  .badge-confirmed { background: rgba(48,164,108,.12); color: var(--confirmed); }
+  .badge-suggestion { background: rgba(200,168,75,.14); color: #8a6800; }
+  .badge-pending { background: rgba(224,82,82,.12); color: var(--pending); }
+  .badge-urgent { background: rgba(196,98,58,.12); color: var(--terracotta); }
+  .badge-team { background: rgba(122,112,96,.1); color: var(--mist); }
+  .badge-researching { background: rgba(100,149,237,.12); color: #4169b8; }
+  .flight-chevron { font-size: .85rem; color: var(--mist); transition: transform .28s; }
+  .flight-card.expanded .flight-chevron { transform: rotate(180deg); }
+  .flight-detail { max-height: 0; overflow: hidden; transition: max-height .35s ease; background: rgba(245,240,232,.6); }
+  .flight-detail.open { max-height: 500px; }
+  .flight-detail-inner { padding: .5rem 1.4rem 1.3rem calc(1.4rem + 52px + 1rem); font-size: .83rem; line-height: 1.7; }
+  .flight-leg { display: flex; align-items: center; gap: .8rem; padding: .6rem 0; border-bottom: 1px solid rgba(139,69,19,.08); }
+  .flight-leg:last-child { border-bottom: none; }
+  .leg-num { font-family: 'DM Mono', monospace; font-size: .6rem; color: var(--gold); min-width: 36px; }
+  .leg-flight { font-family: 'DM Mono', monospace; font-size: .78rem; font-weight: 500; color: var(--ink); }
+  .leg-time { font-size: .75rem; color: var(--mist); }
 
-/* FOOTER */
-.footer { background:var(--ink); color:rgba(255,255,255,.4); text-align:center; padding:22px; font-size:12px; letter-spacing:.06em; }
-.footer strong { color:var(--gold); }
+  /* ── ITINERARIES ── */
+  .itinerary-section { margin-bottom: 4rem; }
+  .dest-block { margin-bottom: 3rem; }
+  .dest-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; padding-bottom: .7rem; border-bottom: 1px solid rgba(139,69,19,.12); }
+  .dest-icon { font-size: 1.4rem; }
+  .dest-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; flex: 1; }
+  .dest-dates { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--mist); letter-spacing: .05em; }
+  .dest-count { font-family: 'DM Mono', monospace; font-size: .6rem; color: rgba(122,112,96,.5); }
+  .items-grid { display: grid; gap: 1px; background: rgba(139,69,19,.08); border: 1px solid rgba(139,69,19,.08); border-radius: 10px; overflow: hidden; }
+  .item-row { background: var(--cream); padding: .85rem 1.2rem; display: flex; align-items: center; gap: .8rem; border-bottom: 1px solid rgba(139,69,19,.06); transition: background .18s; }
+  .item-row:last-child { border-bottom: none; }
+  .item-row:hover { background: var(--warm); }
+  .item-icon { font-size: .9rem; flex-shrink: 0; width: 20px; text-align: center; }
+  .item-name { font-size: .85rem; flex: 1; line-height: 1.4; }
+  .item-status { flex-shrink: 0; }
 
-@media(max-width:600px){
-  .hero{padding:32px 16px 28px}
-  .token-bar{padding:10px 14px}
-  .wrap{padding:20px 12px 44px}
-  .status-bar{gap:10px;padding:10px 12px}
-}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.spin{display:inline-block;animation:spin 1s linear infinite}
-@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  /* ── PENDING ── */
+  .pending-section { margin-bottom: 5rem; scroll-margin-top: 80px; }
+  .pending-header { display: flex; align-items: center; gap: .8rem; background: rgba(224,82,82,.06); border: 1px solid rgba(224,82,82,.2); border-left: 4px solid var(--pending); border-radius: 0 12px 12px 0; padding: 1.2rem 1.4rem; margin-bottom: 1.5rem; }
+  .pending-header-icon { font-size: 1.3rem; }
+  .pending-header-text { flex: 1; }
+  .pending-header-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--pending); margin-bottom: .2rem; }
+  .pending-header-sub { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--mist); letter-spacing: .05em; }
+  .pending-count-big { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--pending); }
+  .pending-grid { display: grid; gap: 1px; background: rgba(139,69,19,.1); border: 1px solid rgba(139,69,19,.1); border-radius: 12px; overflow: hidden; }
+  .pending-row { background: var(--cream); padding: 1rem 1.3rem; display: grid; grid-template-columns: auto 1fr auto auto; gap: 1rem; align-items: start; border-bottom: 1px solid rgba(139,69,19,.07); transition: background .18s; }
+  .pending-row:last-child { border-bottom: none; }
+  .pending-row:hover { background: var(--warm); }
+  .pending-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: rgba(224,82,82,.2); line-height: 1; min-width: 28px; }
+  .pending-name { font-family: 'Playfair Display', serif; font-size: .95rem; font-weight: 700; margin-bottom: .2rem; }
+  .pending-note { font-size: .75rem; color: var(--mist); line-height: 1.5; }
+  .pending-urgency { font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .07em; padding: .2rem .55rem; border-radius: 100px; text-transform: uppercase; white-space: nowrap; align-self: start; }
+  .u-critical { background: rgba(224,82,82,.15); color: var(--pending); }
+  .u-high { background: rgba(200,168,75,.15); color: #8a6800; }
+  .u-normal { background: rgba(107,124,62,.12); color: var(--olive); }
+  .pending-link { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--terracotta); text-decoration: none; white-space: nowrap; align-self: start; transition: opacity .18s; }
+  .pending-link:hover { opacity: .65; }
+
+  /* ── FOOTER ── */
+  footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(139,69,19,.1); font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .12em; color: var(--mist); }
+  footer em { font-style: italic; font-family: 'Playfair Display', serif; font-size: .88rem; color: var(--terracotta); letter-spacing: 0; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes scrollPulse { 0%, 100% { opacity: .4; } 50% { opacity: 1; } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+
+  @media (max-width: 600px) {
+    .flight-detail-inner { padding-left: 1.4rem; }
+    .pending-row { grid-template-columns: auto 1fr; gap: .5rem; }
+    .pending-urgency, .pending-link { grid-column: 2; }
+  }
 </style>
 </head>
 <body>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-eyebrow">Planejamento · <span id="syncLabel">dados locais</span></div>
-  <h1 class="hero-title">Europa 2026<br><em style="font-weight:400;font-size:.72em">Leite, Abrego, Araujo &amp; Nogueira</em></h1>
-  <div class="hero-sub">22 de maio → 8 de junho de 2026 &nbsp;·&nbsp; 18 dias &nbsp;·&nbsp; 5 destinos</div>
-  <div class="hero-badges">
-    <span class="hero-badge">🇪🇸 Barcelona</span>
-    <span class="hero-badge">🇮🇹 Roma</span>
-    <span class="hero-badge">🌊 Amalfi</span>
-    <span class="hero-badge">🍷 Toscana</span>
-    <span class="hero-badge">🇫🇷 Paris</span>
-  </div>
-  <div class="countdown-hero">✈️ &nbsp;<strong id="days">—</strong>&nbsp; dias para a viagem</div>
-</div>
-
-<!-- TOKEN BAR -->
-<div class="token-bar">
-  <label>ClickUp Token</label>
-  <input type="password" id="tokenInput" placeholder="pk_••••••••••••••• (Settings → Apps → API Token)" />
-  <button class="btn-sync" id="btnSync" onclick="syncClickUp()">↻ Sincronizar</button>
-  <span class="sync-info" id="syncInfo">Cole o token para buscar dados em tempo real do ClickUp</span>
-</div>
-
-<!-- ROUTE BAR -->
-<div class="route-bar">
-  <span class="route-flag">🇧🇷</span><span class="route-city">Manaus<span class="route-date">22 mai</span></span>
-  <span class="route-arr">→</span>
-  <span class="route-flag">🇪🇸</span><span class="route-city">Barcelona<span class="route-date">22–26 mai</span></span>
-  <span class="route-arr">→</span>
-  <span class="route-flag">🇮🇹</span><span class="route-city">Roma<span class="route-date">26–29 mai</span></span>
-  <span class="route-arr">→</span>
-  <span class="route-flag">🌊</span><span class="route-city">Amalfi<span class="route-date">29 mai–2 jun</span></span>
-  <span class="route-arr">→</span>
-  <span class="route-flag">🍷</span><span class="route-city">Toscana<span class="route-date">1–4 jun</span></span>
-  <span class="route-arr">→</span>
-  <span class="route-flag">🇫🇷</span><span class="route-city">Paris<span class="route-date">4–8 jun</span></span>
-  <span class="route-arr">→</span>
-  <span class="route-flag">🇧🇷</span><span class="route-city">Manaus<span class="route-date">8 jun</span></span>
-</div>
-
-<!-- STATUS BAR -->
-<div class="status-bar" id="statusBar">
-  <div class="status-item"><span class="status-dot dot-ok"></span> <span id="st1">6 voos confirmados</span></div>
-  <div class="status-item"><span class="status-dot dot-pend"></span> <span id="st2">2 transfers pendentes</span></div>
-  <div class="status-item"><span class="status-dot dot-warn"></span> <span id="st3">5 hospedagens a confirmar</span></div>
-  <div class="status-item"><span class="status-dot dot-pend"></span> <span id="st4">Checklist em andamento</span></div>
-</div>
-
-<div class="wrap">
-  <div class="err-box" id="errBox"></div>
-  <div class="update-badge">📋 <span id="badgeText">Versão de <strong id="genDate"></strong> — sincronize com o ClickUp para atualizar em tempo real.</span></div>
-
-  <!-- DESTINOS -->
-  <div class="section">
-    <div class="sec-title">🗺️ Roteiro por Destino</div>
-    <div class="sec-sub">O que fazer e onde ficar em cada cidade</div>
-    <div class="city-grid">
-
-      <div class="city-card" style="animation-delay:.05s">
-        <div class="city-header" style="background:linear-gradient(135deg,#e8412a,#ff6b4a)" data-icon="🏖️">
-          <div class="city-flag">🇪🇸</div>
-          <div class="city-name">Barcelona</div>
-          <div class="city-dates">22 a 26 de maio · 4 noites</div>
-        </div>
-        <div class="city-body">
-          <div class="city-hosp hosp-pend" id="hosp-bcn"><div class="hosp-dot" style="background:#e67e22"></div>🏨 Hospedagem a confirmar</div>
-          <ul class="city-acts">
-            <li><span class="act-icon">⛪</span> Catedral Sagrada Família</li>
-            <li><span class="act-icon">🌿</span> Park Güell</li>
-            <li><span class="act-icon">🏛️</span> Casa Batlló e La Pedrera</li>
-            <li><span class="act-icon">🏰</span> Bairro Gótico</li>
-            <li><span class="act-icon">🛒</span> Mercado de La Boqueria</li>
-            <li><span class="act-icon">⛰️</span> Montjuïc</li>
-            <li><span class="act-icon">💎</span> Hidden gem: Recinte Modernista de Sant Pau</li>
-            <li><span class="act-icon">⚠️</span> <em>Pochete antifurto obrigatória</em></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="city-card" style="animation-delay:.1s">
-        <div class="city-header" style="background:linear-gradient(135deg,#3a6fa8,#5a8fc8)" data-icon="🏛️">
-          <div class="city-flag">🇮🇹</div>
-          <div class="city-name">Roma</div>
-          <div class="city-dates">26 a 29 de maio · 3 noites</div>
-        </div>
-        <div class="city-body">
-          <div class="city-hosp hosp-pend" id="hosp-rom"><div class="hosp-dot" style="background:#e67e22"></div>🏨 Hospedagem a confirmar</div>
-          <ul class="city-acts">
-            <li><span class="act-icon">🏟️</span> Coliseu + Fórum Romano</li>
-            <li><span class="act-icon">⛪</span> Vaticano + Museus + Capela Sistina</li>
-            <li><span class="act-icon">⛲</span> Fontana di Trevi</li>
-            <li><span class="act-icon">🏛️</span> Panteão + Piazza Navona</li>
-            <li><span class="act-icon">🌆</span> Bairro Trastevere (jantar)</li>
-            <li><span class="act-icon">💎</span> Hidden gem: Gianicolo (melhor mirante)</li>
-            <li><span class="act-icon">👗</span> <em>Ombros e joelhos cobertos nas igrejas</em></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="city-card" style="animation-delay:.15s">
-        <div class="city-header" style="background:linear-gradient(135deg,#2e8b6b,#4eab8b)" data-icon="🌊">
-          <div class="city-flag">🌊</div>
-          <div class="city-name">Costa Amalfitana</div>
-          <div class="city-dates">29 mai a 2 jun · 4 noites</div>
-        </div>
-        <div class="city-body">
-          <div class="city-hosp hosp-pend" id="hosp-aml"><div class="hosp-dot" style="background:#e67e22"></div>🏨 Hospedagem a confirmar</div>
-          <ul class="city-acts">
-            <li><span class="act-icon">🌸</span> Positano</li>
-            <li><span class="act-icon">⛪</span> Amalfi — Catedral Sant'Andrea</li>
-            <li><span class="act-icon">🌺</span> Ravello — Terraço do Infinito</li>
-            <li><span class="act-icon">🥾</span> Sentiero degli Dei (trilha dos deuses)</li>
-            <li><span class="act-icon">⛴️</span> Passeio de Ferry pela costa</li>
-            <li><span class="act-icon">💎</span> Hidden gem: Fiordo di Furore</li>
-            <li><span class="act-icon">☀️</span> <em>Protetor solar FPS 50+ essencial</em></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="city-card" style="animation-delay:.2s">
-        <div class="city-header" style="background:linear-gradient(135deg,#c47d2a,#e49d4a)" data-icon="🍷">
-          <div class="city-flag">🍷</div>
-          <div class="city-name">Toscana + Milão</div>
-          <div class="city-dates">1 a 4 de junho · 3 noites</div>
-        </div>
-        <div class="city-body">
-          <div class="city-hosp hosp-pend" id="hosp-tos"><div class="hosp-dot" style="background:#e67e22"></div>🏨 Hospedagem a confirmar</div>
-          <ul class="city-acts">
-            <li><span class="act-icon">🏛️</span> Florença — Duomo + Galeria Uffizi</li>
-            <li><span class="act-icon">🌅</span> Piazzale Michelangelo (pôr do sol)</li>
-            <li><span class="act-icon">🏰</span> Siena — Piazza del Campo</li>
-            <li><span class="act-icon">🗼</span> San Gimignano — cidade das torres</li>
-            <li><span class="act-icon">🌾</span> Val d'Orcia — road trip</li>
-            <li><span class="act-icon">🏙️</span> Milão — Duomo + Última Ceia de Leonardo</li>
-            <li><span class="act-icon">⚠️</span> <em>ZTL Florença — não entre de carro!</em></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="city-card" style="animation-delay:.25s">
-        <div class="city-header" style="background:linear-gradient(135deg,#8b4fa8,#ab6fc8)" data-icon="🗼">
-          <div class="city-flag">🇫🇷</div>
-          <div class="city-name">Paris</div>
-          <div class="city-dates">4 a 8 de junho · 4 noites</div>
-        </div>
-        <div class="city-body">
-          <div class="city-hosp hosp-pend" id="hosp-par"><div class="hosp-dot" style="background:#e67e22"></div>🏨 Hospedagem a confirmar</div>
-          <ul class="city-acts">
-            <li><span class="act-icon">🗼</span> Torre Eiffel <em style="font-size:11px;opacity:.6">(reservar agora!)</em></li>
-            <li><span class="act-icon">🖼️</span> Museu do Louvre</li>
-            <li><span class="act-icon">🎨</span> Museu d'Orsay</li>
-            <li><span class="act-icon">👑</span> Palácio de Versalhes</li>
-            <li><span class="act-icon">⛪</span> Montmartre + Sacré-Cœur</li>
-            <li><span class="act-icon">💎</span> Hidden gem: Canal Saint-Martin</li>
-            <li><span class="act-icon">🎫</span> <em>Dica: Paris Museum Pass (fura fila)</em></li>
-          </ul>
-        </div>
-      </div>
-
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Europe 2026 · Live Dashboard</p>
+    <h1 class="hero-title">Italia &amp; França<br><em>Magnifica</em></h1>
+    <p class="hero-brand">by Tototur</p>
+    <div class="hero-dates">23 Maio <span style="opacity:.4">→</span> 08 Junho · 2026</div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" id="stat-voos">—</div><div class="stat-label">voos</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">destinos</div></div>
+      <div class="stat"><div class="stat-num" id="stat-confirmed">—</div><div class="stat-label">confirmados</div></div>
+      <div class="stat"><div class="stat-num" id="stat-pending">—</div><div class="stat-label">pendências</div></div>
     </div>
   </div>
+  <div class="hero-scroll"><div class="scroll-line"></div>scroll</div>
+</section>
 
-  <!-- VOOS & TRANSFERS -->
-  <div class="section">
-    <div class="sec-title">✈️ Voos & Transfers</div>
-    <div class="sec-sub" id="voosSub">Sincronize para ver datas, horários e números de voo em tempo real</div>
-
-    <div id="voosAereoLabel" class="voos-section-label">✈️ Voos Aéreos</div>
-    <div class="voos-grid" id="voosGridAereo">
-      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Manaus → Barcelona</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>TP 52</strong> · 22 mai · 16h55</span></div><div class="voo-data-row escala-row"><span class="voo-data-label">🔁 Escala</span><span class="voo-data-val escala"><strong>TP1036</strong> · 23 mai · 16h30 <span class="espera-badge">⏱ 23h35min de espera</span></span></div></div></div><div class="voo-badge badge-ok">Confirmado</div></div>
-      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Barcelona → Roma</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>FR6973</strong> · 26 mai · 10h55</span></div></div></div><div class="voo-badge badge-ok">Confirmado</div></div>
-      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Milão → Paris</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>TO3941</strong> · 04 jun · 15h30</span></div></div></div><div class="voo-badge badge-ok">Confirmado</div></div>
-      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Paris → Barcelona</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>AF1548</strong> · 07 jun · 15h20</span></div></div></div><div class="voo-badge badge-ok">Confirmado</div></div>
-      <div class="voo-card ok"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Barcelona → Manaus</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">🛫 Partida</span><span class="voo-data-val"><strong>TP1041</strong> · 08 jun · 06h00</span></div><div class="voo-data-row escala-row"><span class="voo-data-label">🔁 Escala</span><span class="voo-data-val escala"><strong>TP51</strong> · 08 jun · 11h00 <span class="espera-badge">⏱ 5h de espera</span></span></div></div></div><div class="voo-badge badge-ok">Confirmado</div></div>
-    </div>
-
-    <div id="voosTransferLabel" class="voos-section-label" style="margin-top:20px;">🚗 Outros Transfers</div>
-    <div class="voos-grid" id="voosGridTransfer">
-      <div class="voo-card pend"><div class="voo-icon">🚆</div><div class="voo-info"><div class="voo-name">Trem Roma → Positano</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">📅 Data</span><span class="voo-data-val">29 mai</span></div></div></div><div class="voo-badge badge-pend">Pendente</div></div>
-      <div class="voo-card pend"><div class="voo-icon">🚗</div><div class="voo-info"><div class="voo-name">Carro — Amalfi → Toscana</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">📅 Data</span><span class="voo-data-val">02 jun</span></div></div></div><div class="voo-badge badge-pend">Pendente</div></div>
-      <div class="voo-card pend"><div class="voo-icon">🚗</div><div class="voo-info"><div class="voo-name">Carro — Toscana → Milão</div><div class="voo-datas"><div class="voo-data-row"><span class="voo-data-label">📅 Data</span><span class="voo-data-val">04 jun</span></div></div></div><div class="voo-badge badge-pend">Pendente</div></div>
-    </div>
+<!-- SYNC BAR -->
+<div class="sync-bar">
+  <div class="sync-bar-left">
+    <div class="sync-dot loading" id="sync-dot"></div>
+    <span id="sync-status">Carregando dados do ClickUp...</span>
+    <span class="sync-time" id="sync-time"></span>
   </div>
+  <div style="display:flex;gap:.5rem;align-items:center">
+    <button class="sync-btn" id="config-btn" onclick="toggleConfig()">⚙ Configurar API</button>
+    <button class="sync-btn" id="sync-btn" onclick="loadAllData()" disabled>↺ Atualizar</button>
+  </div>
+</div>
 
-  <!-- CHECKLIST -->
-  <div class="section">
-    <div class="sec-title">🧳 O que Levar</div>
-    <div class="sec-sub">Checklist de preparação — sincronize para ver o progresso real</div>
-    <div class="check-grid" id="checkGrid">
-      <div class="check-card" style="animation-delay:.05s">
-        <div class="check-title">📄 Documentos <span class="check-pct" id="pct-docs">0/8</span></div>
-        <div class="check-progress"><div class="check-fill" id="fill-docs" style="width:0%;background:#e8412a"></div></div>
-        <ul class="check-items" id="list-docs">
-          <li><span class="check-circle"></span>Checar validade do passaporte (mín. 6 meses após 08/jun)</li>
-          <li><span class="check-circle"></span>PID — Permissão Internacional para Dirigir</li>
-          <li><span class="check-circle"></span>Seguro Viagem (mín. 30k euros — obrigatório Schengen)</li>
-          <li><span class="check-circle"></span>Cópias digitais de todos os documentos</li>
-          <li><span class="check-circle"></span>Confirmações impressas: voos, hotéis, ingressos</li>
-          <li><span class="check-circle"></span>Cartão de vacinas atualizado</li>
-          <li><span class="check-circle"></span>Chip internacional ou eSIM</li>
-          <li><span class="check-circle"></span>Receitas médicas em português e inglês</li>
-        </ul>
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Tototur '26</span>
+  <div class="nav-tabs">
+    <a class="nav-tab" href="#voos">✈ Voos</a>
+    <a class="nav-tab" href="#barcelona">Barcelona</a>
+    <a class="nav-tab" href="#roma">Roma</a>
+    <a class="nav-tab" href="#toscana">Toscana</a>
+    <a class="nav-tab" href="#paris">Paris</a>
+  </div>
+  <a class="nav-pending-btn" href="#pendencias">⚑ Pendências</a>
+</nav>
+
+<!-- MAIN -->
+<main>
+
+  <!-- CONFIG PANEL -->
+  <div class="config-panel" id="config-panel">
+    <div class="config-title">Configuração da API ClickUp</div>
+    <div class="config-sub">Seus dados são salvos apenas no navegador e nunca enviados a terceiros</div>
+    <div class="config-form">
+      <div class="config-field">
+        <label>API Token (Personal Token)</label>
+        <input type="password" id="api-token" placeholder="pk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
+        <p class="config-hint">ClickUp → Configurações → Apps → API Token pessoal</p>
       </div>
-      <div class="check-card" style="animation-delay:.08s">
-        <div class="check-title">👗 Roupas <span class="check-pct" id="pct-roupas">0/7</span></div>
-        <div class="check-progress"><div class="check-fill" id="fill-roupas" style="width:0%;background:#c47d2a"></div></div>
-        <ul class="check-items" id="list-roupas">
-          <li><span class="check-circle"></span>Roupas leves 15–25°C (5–6 conjuntos)</li>
-          <li><span class="check-circle"></span>Roupa para igrejas (ombros + joelhos cobertos)</li>
-          <li><span class="check-circle"></span>Roupa social para jantar elegante</li>
-          <li><span class="check-circle"></span>Roupa de praia (Amalfi + Barcelona)</li>
-          <li><span class="check-circle"></span>Calçado confortável para caminhadas e trilhas</li>
-          <li><span class="check-circle"></span>Agasalho leve + capa de chuva compacta</li>
-          <li><span class="check-circle"></span>Mochila de dia + pochete antifurto</li>
-        </ul>
-      </div>
-      <div class="check-card" style="animation-delay:.11s">
-        <div class="check-title">💊 Saúde <span class="check-pct" id="pct-saude">0/6</span></div>
-        <div class="check-progress"><div class="check-fill" id="fill-saude" style="width:0%;background:#2e8b6b"></div></div>
-        <ul class="check-items" id="list-saude">
-          <li><span class="check-circle"></span>Protetor solar FPS 50+ (rosto e corpo)</li>
-          <li><span class="check-circle"></span>Kit remédios básicos (analgésico, antigripal…)</li>
-          <li><span class="check-circle"></span>Medicamentos de uso contínuo + reserva extra</li>
-          <li><span class="check-circle"></span>Meia de compressão para voo longo</li>
-          <li><span class="check-circle"></span>Melatonina para jet lag</li>
-          <li><span class="check-circle"></span>Higiene pessoal 100ml (bagagem de mão)</li>
-        </ul>
-      </div>
-      <div class="check-card" style="animation-delay:.14s">
-        <div class="check-title">📱 Tecnologia <span class="check-pct" id="pct-tech">0/5</span></div>
-        <div class="check-progress"><div class="check-fill" id="fill-tech" style="width:0%;background:#3a6fa8"></div></div>
-        <ul class="check-items" id="list-tech">
-          <li><span class="check-circle"></span>Adaptador tomada europeu Tipo C/F (2 unid.)</li>
-          <li><span class="check-circle"></span>Powerbank mín. 20.000mAh (somente mão)</li>
-          <li><span class="check-circle"></span>Mapas offline de todos os destinos</li>
-          <li><span class="check-circle"></span>Ingressos digitais salvos offline</li>
-          <li><span class="check-circle"></span>Câmera + cartão SD reserva + fone</li>
-        </ul>
-      </div>
-      <div class="check-card" style="animation-delay:.17s">
-        <div class="check-title">💳 Dinheiro <span class="check-pct" id="pct-din">0/6</span></div>
-        <div class="check-progress"><div class="check-fill" id="fill-din" style="width:0%;background:#8b4fa8"></div></div>
-        <ul class="check-items" id="list-din">
-          <li><span class="check-circle"></span>Cartão internacional sem IOF (Nomad/Wise) × 2</li>
-          <li><span class="check-circle"></span>Cartão backup (Visa + Mastercard separados)</li>
-          <li><span class="check-circle"></span>Avisar banco + tel. de bloqueio de emergência</li>
-          <li><span class="check-circle"></span>Euros em espécie (200–300€)</li>
-          <li><span class="check-circle"></span>Verificar e ajustar limite do cartão</li>
-          <li><span class="check-circle"></span>Apps: Translate, Maps, Omio, Uber</li>
-        </ul>
-      </div>
-      <div class="check-card" style="animation-delay:.2s">
-        <div class="check-title">🛫 Aeroporto <span class="check-pct" id="pct-aero">0/6</span></div>
-        <div class="check-progress"><div class="check-fill" id="fill-aero" style="width:0%;background:var(--gold)"></div></div>
-        <ul class="check-items" id="list-aero">
-          <li><span class="check-circle"></span>Chegar 3h antes (voo internacional)</li>
-          <li><span class="check-circle"></span>Check-in online 24–48h antes + boarding pass offline</li>
-          <li><span class="check-circle"></span>Bagagem de mão: docs, remédios, carregadores</li>
-          <li><span class="check-circle"></span>Kit conforto: travesseiro, tapa-olhos, fone</li>
-          <li><span class="check-circle"></span>Verificar restrições de bagagem</li>
-          <li><span class="check-circle"></span>Registrar viagem no portal Itamaraty</li>
-        </ul>
+      <div class="config-actions">
+        <button class="btn-primary" onclick="saveConfig()">Salvar e Sincronizar</button>
+        <button class="btn-secondary" onclick="toggleConfig()">Cancelar</button>
+        <button class="btn-secondary" onclick="clearConfig()">Limpar</button>
       </div>
     </div>
   </div>
 
-  <!-- DICAS -->
-  <div class="section">
-    <div class="sec-title">💡 Dicas Essenciais</div>
-    <div class="sec-sub">O que toda a família precisa saber antes de embarcar</div>
-    <div class="dicas-grid">
-      <div class="dica-card" style="animation-delay:.04s"><div class="dica-icon">🔒</div><div class="dica-title">Segurança</div><div class="dica-text">Pochete antifurto em Barcelona e Roma. Evite exibir celular nas Ramblas e áreas turísticas.</div></div>
-      <div class="dica-card" style="animation-delay:.07s"><div class="dica-icon">👗</div><div class="dica-title">Igrejas</div><div class="dica-text">Ombros e joelhos cobertos — obrigatório no Vaticano, Florença e todas as igrejas italianas.</div></div>
-      <div class="dica-card" style="animation-delay:.10s"><div class="dica-icon">💳</div><div class="dica-title">Pagamentos</div><div class="dica-text">Cartão sem IOF para tudo. Euros em espécie para ônibus, gorjetas e mercados locais.</div></div>
-      <div class="dica-card" style="animation-delay:.13s"><div class="dica-icon">📱</div><div class="dica-title">Apps Essenciais</div><div class="dica-text">Google Maps (offline), Omio (trens), Google Translate, Uber. Baixar antes de embarcar!</div></div>
-      <div class="dica-card" style="animation-delay:.16s"><div class="dica-icon">🌡️</div><div class="dica-title">Clima</div><div class="dica-text">18–28°C no período. Roupas leves + agasalho fino para as noites mais frescas na Toscana.</div></div>
-      <div class="dica-card" style="animation-delay:.19s"><div class="dica-icon">🚗</div><div class="dica-title">Carro na Toscana</div><div class="dica-text">ZTL em Florença = multa automática por câmera. Nunca entre de carro no centro histórico.</div></div>
+  <!-- ROUTE BANNER -->
+  <div class="route-banner">
+    <div class="route-banner-label">Rota completa</div>
+    <div class="route-cities">
+      <div class="route-city"><div class="city-dot"></div><div class="city-label">Manaus</div></div>
+      <div class="route-arrow">›</div>
+      <div class="route-city"><div class="city-dot"></div><div class="city-label">Barcelona</div></div>
+      <div class="route-arrow">›</div>
+      <div class="route-city"><div class="city-dot"></div><div class="city-label">Roma</div></div>
+      <div class="route-arrow">›</div>
+      <div class="route-city"><div class="city-dot"></div><div class="city-label">Toscana</div></div>
+      <div class="route-arrow">›</div>
+      <div class="route-city"><div class="city-dot"></div><div class="city-label">Milão</div></div>
+      <div class="route-arrow">›</div>
+      <div class="route-city"><div class="city-dot"></div><div class="city-label">Paris</div></div>
+      <div class="route-arrow">›</div>
+      <div class="route-city"><div class="city-dot"></div><div class="city-label">Manaus</div></div>
     </div>
   </div>
 
-</div>
+  <!-- VOOS -->
+  <section class="flights-section" id="voos">
+    <div class="section-label">Reservas aéreas · ao vivo</div>
+    <h2 class="section-heading">Voos — todos os trechos</h2>
+    <div id="flights-container">
+      <div class="loading-block">
+        <div class="loading-spinner"></div>
+        Carregando voos do ClickUp...
+      </div>
+    </div>
+  </section>
 
-<div class="footer">
-  <strong>Europa 2026 — Leite, Abrego, Araujo &amp; Nogueira</strong><br>
-  <span id="footerDate"></span>
-</div>
+  <!-- ITINERÁRIOS -->
+  <section class="itinerary-section">
+    <div class="section-label">Itinerários por destino · ao vivo</div>
+    <h2 class="section-heading">O que fazer — sugestões e confirmados</h2>
+
+    <div class="dest-block" id="barcelona">
+      <div class="dest-header">
+        <div class="dest-icon">🏖️</div>
+        <div class="dest-name">Barcelona</div>
+        <div class="dest-dates">23–26 Mai · 3 noites</div>
+      </div>
+      <div id="bcn-container"><div class="loading-block"><div class="loading-spinner"></div>Carregando...</div></div>
+    </div>
+
+    <div class="dest-block" id="roma">
+      <div class="dest-header">
+        <div class="dest-icon">🏛️</div>
+        <div class="dest-name">Roma</div>
+        <div class="dest-dates">26–29 Mai · 3 noites</div>
+      </div>
+      <div id="rom-container"><div class="loading-block"><div class="loading-spinner"></div>Carregando...</div></div>
+    </div>
+
+    <div class="dest-block" id="toscana">
+      <div class="dest-header">
+        <div class="dest-icon">🍷</div>
+        <div class="dest-name">Toscana + Milão</div>
+        <div class="dest-dates">29 Mai–03 Jun · 5 noites</div>
+      </div>
+      <div id="tsc-container"><div class="loading-block"><div class="loading-spinner"></div>Carregando...</div></div>
+    </div>
+
+    <div class="dest-block" id="paris">
+      <div class="dest-header">
+        <div class="dest-icon">🗼</div>
+        <div class="dest-name">Paris</div>
+        <div class="dest-dates">03–08 Jun · 5 noites</div>
+      </div>
+      <div id="par-container"><div class="loading-block"><div class="loading-spinner"></div>Carregando...</div></div>
+    </div>
+  </section>
+
+  <!-- PENDÊNCIAS -->
+  <section class="pending-section" id="pendencias">
+    <div class="pending-header">
+      <div class="pending-header-icon">⚑</div>
+      <div class="pending-header-text">
+        <div class="pending-header-title">Pendências — ao vivo</div>
+        <div class="pending-header-sub">Tarefas com status "pesquisando" ou "booking in progress"</div>
+      </div>
+      <div class="pending-count-big" id="pending-count">—</div>
+    </div>
+    <div id="pending-container">
+      <div class="loading-block"><div class="loading-spinner"></div>Carregando pendências...</div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <em>Europe 2026 by Tototur</em><br><br>
+  Dados sincronizados em tempo real via API ClickUp<br>
+  Manaus · Barcelona · Roma · Toscana · Milão · Paris · 23 Mai – 08 Jun 2026
+</footer>
 
 <script>
-// ── IDs do ClickUp ────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════
+// CONFIGURAÇÃO
+// ═══════════════════════════════════════════════════════
+
+// IDs das listas no ClickUp (Europa 2026)
 const LISTS = {
-  aereo:    '901414789445',
-  transfer: '901414619661',
-  hospBCN:  '901414619197',
-  hospROM:  '901414619198',
-  hospAML:  '901414619199',
-  hospTOS:  '901414619200',
-  hospPAR:  '901414619205',
-  docs:     '901414619280',
-  roupas:   '901414619283',
-  saude:    '901414619284',
-  tech:     '901414619286',
-  dinheiro: '901414619288',
-  aeroporto:'901414619289',
+  aereo:       '901414789445',
+  transfers:   '901414619661',
+  bcnItinerary:'901414616568',
+  romItinerary:'901414616604',
+  tscItinerary:'901414616774',
+  parItinerary:'901414616569',
 };
 
-// ── IDs dos campos customizados ──────────────────────────────────────────────
-const CF = {
-  // Lista Aereo
-  dataVooInicial:  '0f35d046-e21a-4c15-92c5-ae9ff55a54b7', // Data do Voo Inicial
-  dataVooEscala:   '3d1bfb58-fad2-4e21-974c-b193ad44b550', // Data Voo Escala
-  numVoo1:         '03ea267b-8029-4f7b-aec2-120769a6e3f7', // # Voo 1 (Inicial)
-  numVoo2:         '8fd376d5-ceaa-4a62-a3bd-0b0396fc84e8', // # Voo 2 (Escala)
-  // Lista Outros Transfers
-  origemDesl:      '4211f599-91a1-4f5c-b899-e059aef27c5e', // Origem deslocamento (location)
-  destino:         '3ff3e131-e6bc-4f60-89f4-42795bd41538', // Destino (location)
-  tipoTransporte:  '5b98398a-e81a-40de-aaf8-6395ec72843f', // Tipo de Transporte (dropdown)
-  inicioDesl:      'bce1d655-3360-4ee1-a4f0-0601ecb149df', // Inicio Deslocamento (date)
-  fimDesl:         'bdfde119-1275-4e17-90f5-79a8aae1af53', // Fim deslocamento (date)
+// IDs das pastas para busca de pendências
+const FOLDERS = {
+  deslocamentos: '90147899538',
+  hospedagem:    '90147899232',
+  itinerarios:   '90147897433',
 };
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
-const isDone = t => ['complete','done','closed'].includes((t.status?.status || t.status || '').toLowerCase());
-const tsDate = ts => {
-  if(!ts) return '';
-  const utcMs = parseInt(ts) + (-4 * 60) * 60000;
-  const d = new Date(utcMs);
-  const day = String(d.getUTCDate()).padStart(2,'0');
-  const month = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'][d.getUTCMonth()];
-  return `${day} ${month}`;
-};
-const tsDateTime = ts => {
-  if(!ts) return null;
-  // Fuso de Manaus: UTC-4
-  const offset = -4 * 60; // minutos
-  const d = new Date(parseInt(ts) + (offset - (new Date().getTimezoneOffset())) * 60000);
-  // Usar UTC methods para evitar conversão dupla do browser
-  const utcMs = parseInt(ts) + offset * 60000;
-  const dd = new Date(utcMs);
-  const day   = String(dd.getUTCDate()).padStart(2,'0');
-  const month = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'][dd.getUTCMonth()];
-  const h = dd.getUTCHours(), m = dd.getUTCMinutes();
-  const hasTime = h !== 0 || m !== 0;
-  return hasTime ? `${day} ${month} · ${String(h).padStart(2,'0')}h${String(m).padStart(2,'0')}` : `${day} ${month}`;
-};
-const TOKEN_KEY = 'cu_token_europa2026';
+// Proxy CORS público (necessário para chamadas de browser → ClickUp API)
+// Em produção, use seu próprio proxy ou servidor backend
+const CORS_PROXY = 'https://corsproxy.io/?';
+const CU_API = 'https://api.clickup.com/api/v2';
 
-// Extrai valor de um campo customizado por ID — retorna o value bruto
-function getCF(task, fieldId) {
-  if(!fieldId) return null;
-  const field = (task.custom_fields || []).find(f => f.id === fieldId);
-  if(!field) return null;
-  const v = field.value;
-  if(v === null || v === undefined || v === '') return null;
-  return v;
+// ═══════════════════════════════════════════════════════
+// CONFIG MANAGEMENT
+// ═══════════════════════════════════════════════════════
+
+function getToken() {
+  return localStorage.getItem('cu_token_europe2026') || '';
 }
 
-// Helpers de tempo
-function calcEspera(ts1, ts2) {
-  if(!ts1 || !ts2) return null;
-  const diff = Math.abs(parseInt(ts2) - parseInt(ts1));
-  const horas = Math.floor(diff / 3600000);
-  const min   = Math.floor((diff % 3600000) / 60000);
-  if(horas === 0) return `${min}min`;
-  return min > 0 ? `${horas}h${String(min).padStart(2,'0')}min` : `${horas}h`;
+function saveConfig() {
+  const token = document.getElementById('api-token').value.trim();
+  if (!token) { alert('Token obrigatório!'); return; }
+  localStorage.setItem('cu_token_europe2026', token);
+  toggleConfig();
+  loadAllData();
 }
 
-function extrairCidade(locObj) {
-  if(!locObj) return '';
-  const addr = (locObj.formatted_address || '');
-  const parts = addr.split(',').map(s => s.trim()).filter(Boolean);
-  if(parts.length >= 3) return parts.slice(0, 2).join(', ');
-  return addr;
+function clearConfig() {
+  localStorage.removeItem('cu_token_europe2026');
+  document.getElementById('api-token').value = '';
+  setSyncStatus('Token removido. Configure novamente.', 'error');
 }
 
-function getToken(){ return document.getElementById('tokenInput').value.trim() || localStorage.getItem(TOKEN_KEY) || ''; }
-function saveToken(t){ if(t) localStorage.setItem(TOKEN_KEY, t); }
-
-// Restore saved token
-const saved = localStorage.getItem(TOKEN_KEY);
-if(saved) document.getElementById('tokenInput').value = saved;
-document.getElementById('tokenInput').addEventListener('change', e => saveToken(e.target.value.trim()));
-
-// ── Countdown ─────────────────────────────────────────────────────────────────
-function updateCountdown(){
-  const d = Math.ceil((new Date('2026-05-22') - new Date()) / 86400000);
-  document.getElementById('days').textContent = d > 0 ? d : d === 0 ? 'HOJE!' : 'Em viagem! 🎉';
+function toggleConfig() {
+  const panel = document.getElementById('config-panel');
+  panel.classList.toggle('visible');
+  if (panel.classList.contains('visible')) {
+    const token = getToken();
+    if (token) document.getElementById('api-token').value = token;
+  }
 }
-updateCountdown();
 
-// ── Date labels ───────────────────────────────────────────────────────────────
-const ds = new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'long',year:'numeric'});
-document.getElementById('genDate').textContent = ds;
-document.getElementById('footerDate').textContent = `Atualizado em ${ds}`;
+// ═══════════════════════════════════════════════════════
+// API
+// ═══════════════════════════════════════════════════════
 
-// ── Fetch via ClickUp API ─────────────────────────────────────────────────────
-async function fetchList(listId, token){
-  // Busca a lista de tarefas
-  const res = await fetch(
-    `https://api.clickup.com/api/v2/list/${listId}/task?include_closed=true&subtasks=false`,
-    { headers: { Authorization: token } }
-  );
-  if(!res.ok) throw new Error(`Erro ${res.status} na lista ${listId}`);
-  const data = await res.json();
+async function cuFetch(endpoint, params = '') {
+  const token = getToken();
+  if (!token) throw new Error('NO_TOKEN');
+  const url = `${CORS_PROXY}${encodeURIComponent(`${CU_API}${endpoint}${params}`)}`;
+  const res = await fetch(url, {
+    headers: { 'Authorization': token, 'Content-Type': 'application/json' }
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
+async function getTasks(listId) {
+  const data = await cuFetch(`/list/${listId}/task`, '?include_closed=true&subtasks=true');
   return data.tasks || [];
 }
 
-// Busca detalhes completos de uma tarefa (inclui custom_fields com valores)
-async function fetchTaskDetail(taskId, token){
-  const res = await fetch(
-    `https://api.clickup.com/api/v2/task/${taskId}?include_subtasks=false`,
-    { headers: { Authorization: token } }
-  );
-  if(!res.ok) return null;
-  return await res.json();
+async function getFolderTasks(folderId) {
+  // Pega todas as listas da pasta e une as tarefas
+  const data = await cuFetch(`/folder/${folderId}/list`);
+  const lists = data.lists || [];
+  const all = [];
+  for (const list of lists) {
+    try {
+      const tasks = await getTasks(list.id);
+      all.push(...tasks.map(t => ({ ...t, _listName: list.name })));
+    } catch(e) {}
+  }
+  return all;
 }
 
-// Busca lista e enriquece com custom_fields detalhados
-async function fetchListDetailed(listId, token){
-  const tasks = await fetchList(listId, token);
-  console.log(`fetchListDetailed: lista ${listId} retornou ${tasks.length} tarefas`);
-  // Busca detalhes de cada tarefa em paralelo para obter custom_fields
-  const detailed = await Promise.all(
-    tasks.map(t => fetchTaskDetail(t.id, token)
-      .then(d => {
-        if(d) console.log(`  tarefa ${t.id} (${t.name}): ${(d.custom_fields||[]).length} campos customizados`);
-        return d || t;
-      })
-      .catch(err => { console.warn(`  erro em ${t.id}:`, err); return t; })
-    )
-  );
-  return detailed;
+// ═══════════════════════════════════════════════════════
+// STATUS / SYNC UI
+// ═══════════════════════════════════════════════════════
+
+function setSyncStatus(msg, state = 'ok') {
+  const dot = document.getElementById('sync-dot');
+  const status = document.getElementById('sync-status');
+  dot.className = 'sync-dot ' + (state === 'loading' ? 'loading' : state === 'error' ? 'error' : '');
+  status.textContent = msg;
+  if (state === 'ok') {
+    const now = new Date();
+    document.getElementById('sync-time').textContent =
+      `· Atualizado ${now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}`;
+  }
 }
 
-// ── Render hospedagem ─────────────────────────────────────────────────────────
-function renderHosp(id, tasks){
-  const el = document.getElementById(id);
-  const done = tasks.filter(isDone).length;
-  const total = tasks.length;
-  const allDone = total > 0 && done === total;
-  el.className = `city-hosp ${allDone ? 'hosp-ok' : 'hosp-pend'}`;
-  const dot = el.querySelector('.hosp-dot');
-  dot.style.background = allDone ? '#27ae60' : '#e67e22';
-  const name = tasks[0]?.name || 'Hospedagem';
-  el.innerHTML = `<div class="hosp-dot" style="background:${allDone?'#27ae60':'#e67e22'}"></div>
-    🏨 ${allDone ? name.replace(/hospedagem /i,'') : 'Hospedagem a confirmar'}`;
+// ═══════════════════════════════════════════════════════
+// FORMATTERS
+// ═══════════════════════════════════════════════════════
+
+function tsToDate(ts) {
+  if (!ts) return null;
+  const d = new Date(parseInt(ts));
+  return { day: d.getDate(), month: d.toLocaleString('pt-BR', { month: 'short' }).replace('.',''), full: d.toLocaleString('pt-BR', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' }) };
 }
 
-// ── Render checklist ──────────────────────────────────────────────────────────
-function renderCheck(prefix, tasks, color){
-  const done = tasks.filter(isDone).length;
-  const total = tasks.length;
-  const pct = total ? Math.round(done/total*100) : 0;
-  document.getElementById(`pct-${prefix}`).textContent = `${done}/${total}`;
-  document.getElementById(`fill-${prefix}`).style.width = pct + '%';
-  const ul = document.getElementById(`list-${prefix}`);
-  if(!ul) return;
-  ul.innerHTML = tasks.map(t => {
-    const d = isDone(t);
-    return `<li class="${d?'done-item':''}">
-      <span class="check-circle ${d?'done':''}"></span>
-      ${t.name}
-    </li>`;
-  }).join('');
+function getStatusBadge(status) {
+  const s = (status || '').toLowerCase();
+  if (['confirmado','confirmed','complete','done'].some(x => s.includes(x))) return '<span class="badge badge-confirmed">✓ Confirmado</span>';
+  if (['pesquisando','researching'].some(x => s.includes(x))) return '<span class="badge badge-researching">🔍 Pesquisando</span>';
+  if (['booking','reserva'].some(x => s.includes(x))) return '<span class="badge badge-pending">📋 Booking</span>';
+  if (['sugestão','sugestao','potential','idea'].some(x => s.includes(x))) return '<span class="badge badge-suggestion">💡 Sugestão</span>';
+  if (['visited','visitado'].some(x => s.includes(x))) return '<span class="badge badge-confirmed">✓ Visitado</span>';
+  if (['skipped'].some(x => s.includes(x))) return '<span class="badge badge-team">— Pulado</span>';
+  return `<span class="badge badge-team">${status}</span>`;
 }
 
-// ── Render voos ───────────────────────────────────────────────────────────────
-function renderVoos(aereo, transfers){
+function getItemIcon(name, status) {
+  const n = name.toLowerCase();
+  const s = (status || '').toLowerCase();
+  if (['confirmado','confirmed','complete'].some(x => s.includes(x))) return '✓';
+  if (n.includes('alerta') || n.includes('ztl') || n.includes('segurança') || n.includes('seguranca')) return '⚠️';
+  if (n.includes('hidden gem') || n.includes('gem')) return '💎';
+  if (n.includes('dica') || n.includes('transporte') || n.includes('navigo')) return '💡';
+  if (n.includes('gastronomia') || n.includes('gelato') || n.includes('vinho') || n.includes('bistrô')) return '🍽️';
+  return '○';
+}
 
-  // Ordena primeiro aereo, depois transfers — dentro de cada grupo por data
-  const sortByDate = arr => arr.slice().sort((a,b) => {
-    const ta = parseInt(getCF(a, CF.dataVooInicial) || getCF(a, CF.inicioDesl) || a.due_date || 0);
-    const tb = parseInt(getCF(b, CF.dataVooInicial) || getCF(b, CF.inicioDesl) || b.due_date || 0);
-    return ta - tb;
+function getCustomField(task, name) {
+  const fields = task.custom_fields || [];
+  const f = fields.find(x => x.name && x.name.toLowerCase().includes(name.toLowerCase()));
+  return f?.value || null;
+}
+
+// ═══════════════════════════════════════════════════════
+// RENDER: VOOS
+// ═══════════════════════════════════════════════════════
+
+function renderFlights(tasks) {
+  if (!tasks.length) return '<div class="loading-block">Nenhum voo encontrado.</div>';
+
+  // Ordenar por data
+  tasks.sort((a, b) => {
+    const da = getCustomField(a, 'Data do Voo') || a.due_date || '0';
+    const db = getCustomField(b, 'Data do Voo') || b.due_date || '0';
+    return parseInt(da) - parseInt(db);
   });
 
-  const aereoSort    = sortByDate(aereo);
-  const transferSort = sortByDate(transfers);
-  const all          = [...aereoSort, ...transferSort];
+  const cards = tasks.map((task, i) => {
+    const name = task.name || '';
+    const parts = name.match(/^([A-Z]+)[\/\-]([A-Z]+)/);
+    const from = parts?.[1] || '?';
+    const to   = parts?.[2] || '?';
 
-  const okVoos = aereo.filter(isDone).length;
-  const pendTransf = transfers.filter(t => !isDone(t)).length;
-  document.getElementById('voosSub').textContent = `${all.filter(isDone).length} de ${all.length} deslocamentos confirmados`;
-  document.getElementById('st1').textContent     = `${okVoos}/${aereo.length} voos confirmados`;
-  document.getElementById('st2').textContent     = `${pendTransf} transfers pendentes`;
+    const voo1  = getCustomField(task, 'Voo 1') || getCustomField(task, 'Inicial') || '';
+    const voo2  = getCustomField(task, 'Voo 2') || getCustomField(task, 'Escala') || '';
+    const data1 = parseInt(getCustomField(task, 'Data do Voo Inicial') || task.due_date || 0);
+    const data2 = parseInt(getCustomField(task, 'Data Voo Escala') || 0);
+    const cheg1 = parseInt(getCustomField(task, 'Chegada Voo 1') || 0);
+    const chegE = parseInt(getCustomField(task, 'Chegada Voo Escala') || 0);
 
-  // Popular grids com dados do ClickUp
-  const gridAereo    = document.getElementById('voosGridAereo');
-  const gridTransfer = document.getElementById('voosGridTransfer');
+    const dateObj = data1 ? new Date(data1) : null;
+    const dayNum  = dateObj ? dateObj.getDate() : '—';
+    const monStr  = dateObj ? dateObj.toLocaleString('pt-BR', { month:'short' }).replace('.','') : '—';
 
-  if(gridAereo) {
-    try {
-      const html = aereoSort.map((t, i) => makeVooCard(t, i)).join('');
-      console.log('HTML gerado para aereo:', html.substring(0, 200));
-      gridAereo.innerHTML = html || '<div class="voo-card pend"><div class="voo-icon">✈️</div><div class="voo-info"><div class="voo-name">Nenhum voo encontrado</div></div></div>';
-      console.log('✅ voosGridAereo atualizado com', aereoSort.length, 'cards');
-    } catch(e) {
-      console.error('❌ Erro ao renderizar aereo:', e);
-    }
-  } else {
-    console.warn('❌ voosGridAereo não encontrado no DOM!');
-  }
+    const formatDT = ts => ts ? new Date(ts).toLocaleString('pt-BR', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' }) : '';
 
-  if(gridTransfer) {
-    try {
-      const html = transferSort.map((t, i) => makeVooCard(t, i)).join('');
-      console.log('HTML gerado para transfer:', html.substring(0, 200));
-      gridTransfer.innerHTML = html || '<div class="voo-card pend"><div class="voo-icon">🚌</div><div class="voo-info"><div class="voo-name">Nenhum transfer encontrado</div></div></div>';
-      console.log('✅ voosGridTransfer atualizado com', transferSort.length, 'cards');
-    } catch(e) {
-      console.error('❌ Erro ao renderizar transfer:', e);
-    }
-  } else {
-    console.warn('❌ voosGridTransfer não encontrado no DOM!');
-  }
+    // Detectar team do nome
+    let team = '';
+    if (/team rebeca/i.test(name)) team = 'Team Rebeca';
+    else if (/team mari/i.test(name)) team = 'Team Mari';
+    else if (/\ball\b/i.test(name)) team = 'ALL';
+
+    // Reserva do nome (XWQLJW, R6QM4U, etc.)
+    const reservaMatch = name.match(/[A-Z0-9]{6,}/);
+    const reserva = reservaMatch ? reservaMatch[0] : '';
+
+    // Companhia do nome
+    let companhia = '';
+    if (/ryanair/i.test(name)) companhia = 'Ryanair';
+    else if (/transavia/i.test(name)) companhia = 'Transavia';
+    else if (/air france|AF/i.test(name)) companhia = 'Air France';
+    else if (/vueling/i.test(name)) companhia = 'Vueling';
+    else if (/tap/i.test(name)) companhia = 'TAP';
+
+    const statusBadge = getStatusBadge(task.status?.status);
+    const voo1Clean = voo1.replace(/\n/g,'').trim();
+    const voo2Clean = voo2.replace(/\n/g,'').trim();
+
+    const hasEscala = voo2Clean && data2;
+
+    const legHTML = `
+      <div class="flight-leg">
+        <div class="leg-num">Voo 1</div>
+        <div class="leg-info">
+          <div class="leg-flight">${voo1Clean ? voo1Clean + (companhia ? ' — ' + companhia : '') : (companhia || 'Ver reserva')}</div>
+          <div class="leg-time">${from} → ${hasEscala ? 'Escala' : to}${data1 ? ' · ' + formatDT(data1) : ''}${cheg1 ? ' → ' + formatDT(cheg1) : ''}</div>
+        </div>
+      </div>
+      ${hasEscala ? `
+      <div class="flight-leg">
+        <div class="leg-num">Voo 2</div>
+        <div class="leg-info">
+          <div class="leg-flight">${voo2Clean} ${companhia ? '— ' + companhia : ''}</div>
+          <div class="leg-time">Escala → ${to}${data2 ? ' · ' + formatDT(data2) : ''}${chegE ? ' → ' + formatDT(chegE) : ''}</div>
+        </div>
+      </div>` : ''}
+      ${task.description ? `<p style="font-size:.78rem;color:var(--mist);margin-top:.5rem;border-top:1px solid rgba(139,69,19,.08);padding-top:.5rem">${task.description.substring(0,200)}${task.description.length > 200 ? '...' : ''}</p>` : ''}
+    `;
+
+    // Rota com escalas no nome
+    const routeParts = name.match(/([A-Z]{2,3})[\/\-]([A-Z]{2,3})(?:[\/\-]([A-Z]{2,3}))?/);
+    const routeHTML = routeParts
+      ? (routeParts[3]
+          ? `<span>${routeParts[1]}</span><span class="flight-arrow">→</span><span>${routeParts[2]}</span><span class="flight-arrow">→</span><span>${routeParts[3]}</span>`
+          : `<span>${routeParts[1]}</span><span class="flight-arrow">→</span><span>${routeParts[2]}</span>`)
+      : `<span>${from}</span><span class="flight-arrow">→</span><span>${to}</span>`;
+
+    return `
+      <div class="flight-card" onclick="toggleFlight(this)">
+        <div class="flight-date-col">
+          <div class="flight-day">${dayNum}</div>
+          <div class="flight-month">${monStr}</div>
+        </div>
+        <div class="flight-body">
+          <div class="flight-route">${routeHTML}</div>
+          <div class="flight-meta">
+            ${reserva ? `<span class="flight-meta-item">🎫 <strong>${reserva}</strong></span>` : ''}
+            ${voo1Clean ? `<span class="flight-meta-item">✈ <strong>${voo1Clean}${voo2Clean ? ' + '+voo2Clean : ''}</strong></span>` : ''}
+            ${data1 ? `<span class="flight-meta-item">🕐 ${formatDT(data1)}</span>` : ''}
+          </div>
+          <div class="flight-tags">
+            ${statusBadge}
+            ${team ? `<span class="badge badge-team">${team}</span>` : ''}
+            ${companhia ? `<span class="badge badge-urgent">${companhia}</span>` : ''}
+          </div>
+        </div>
+        <div class="flight-chevron">▾</div>
+      </div>
+      <div class="flight-detail">
+        <div class="flight-detail-inner">${legHTML}</div>
+      </div>`;
+  }).join('');
+
+  return `<div class="flights-grid">${cards}</div>`;
 }
 
-function makeVooCard(t, i) {
-  const done = isDone(t);
-  const nome = t.name.toLowerCase();
+// ═══════════════════════════════════════════════════════
+// RENDER: ITINERÁRIO
+// ═══════════════════════════════════════════════════════
 
-  // ── Campos Aereo ──────────────────────────────────────────────────────────
-  const dataInicial = getCF(t, CF.dataVooInicial);
-  const dataEscala  = getCF(t, CF.dataVooEscala);
-  const numVoo1Raw  = getCF(t, CF.numVoo1);
-  const numVoo2Raw  = getCF(t, CF.numVoo2);
-  const numVoo1     = numVoo1Raw ? numVoo1Raw.trim().replace(/\n/g,'') : null;
-  const numVoo2     = numVoo2Raw ? numVoo2Raw.trim().replace(/\n/g,'') : null;
+function renderItinerary(tasks) {
+  if (!tasks.length) return '<div class="loading-block">Nenhuma tarefa encontrada.</div>';
 
-  // ── Campos Outros Transfers ──────────────────────────────────────────────
-  const inicioDesl = getCF(t, CF.inicioDesl);
-  const fimDesl    = getCF(t, CF.fimDesl);
-  const tipoRaw    = getCF(t, CF.tipoTransporte);
-  const tipoNome   = tipoRaw?.name || '';
-  const origemCF   = getCF(t, CF.origemDesl);
-    const destinoCF  = getCF(t, CF.destino);
+  // Ordenar: confirmados primeiro, depois por prioridade
+  const priorityOrder = { urgent: 0, high: 1, normal: 2, low: 3, null: 4 };
+  tasks.sort((a, b) => {
+    const sa = (a.status?.status || '').toLowerCase();
+    const sb = (b.status?.status || '').toLowerCase();
+    const aConf = ['confirmado','confirmed','complete'].some(x => sa.includes(x)) ? 0 : 1;
+    const bConf = ['confirmado','confirmed','complete'].some(x => sb.includes(x)) ? 0 : 1;
+    if (aConf !== bConf) return aConf - bConf;
+    return (priorityOrder[a.priority?.priority] ?? 4) - (priorityOrder[b.priority?.priority] ?? 4);
+  });
 
-    // ── Ícone ─────────────────────────────────────────────────────────────────
-    const icon = tipoNome === 'Carro'     ? '🚗'
-               : tipoNome === 'Trem'      ? '🚆'
-               : nome.includes('carro')   ? '🚗'
-               : nome.includes('trem')    ? '🚆'
-               : '✈️';
-
-    // ── Separador visual aereo vs transfer ────────────────────────────────────
-    // sem separador — os dois grids são separados no HTML
-
-    // ── Card de voo aéreo ─────────────────────────────────────────────────────
-    let datasHtml = '';
-
-    if(dataInicial) {
-      const espera = dataEscala ? calcEspera(dataInicial, dataEscala) : null;
-      // Linha do voo inicial
-      datasHtml += `<div class="voo-data-row">
-        <span class="voo-data-label">🛫 Partida</span>
-        <span class="voo-data-val">${numVoo1 ? `<strong>${numVoo1}</strong> &nbsp;` : ''}${tsDateTime(dataInicial)}</span>
+  const rows = tasks.map(task => {
+    const name = task.name || '';
+    const status = task.status?.status || '';
+    const icon = getItemIcon(name, status);
+    const badge = getStatusBadge(status);
+    return `
+      <div class="item-row">
+        <div class="item-icon">${icon}</div>
+        <div class="item-name">${name}</div>
+        <div class="item-status">${badge}</div>
       </div>`;
-      // Linha da escala (se houver)
-      if(dataEscala) {
-        datasHtml += `<div class="voo-data-row escala-row">
-          <span class="voo-data-label">🔁 Escala</span>
-          <span class="voo-data-val escala">${numVoo2 ? `<strong>${numVoo2}</strong> &nbsp;` : ''}${tsDateTime(dataEscala)}${espera ? `<span class="espera-badge">⏱ ${espera} de espera</span>` : ''}</span>
-        </div>`;
-      }
-    }
+  }).join('');
 
-    // ── Card de transfer ──────────────────────────────────────────────────────
-    if(inicioDesl) {
-      const dur = fimDesl ? calcEspera(inicioDesl, fimDesl) : null;
-      datasHtml += `<div class="voo-data-row">
-        <span class="voo-data-label">🟢 Início</span>
-        <span class="voo-data-val">${tsDateTime(inicioDesl)}</span>
-      </div>`;
-      if(fimDesl) {
-        datasHtml += `<div class="voo-data-row">
-          <span class="voo-data-label">🔴 Fim</span>
-          <span class="voo-data-val">${tsDateTime(fimDesl)}${dur ? `<span class="espera-badge">⏱ ${dur}</span>` : ''}</span>
-        </div>`;
-      }
-    }
-
-    // Origem/Destino
-    const origemLabel  = extrairCidade(origemCF);
-    const destinoLabel = extrairCidade(destinoCF);
-    if(origemLabel)  datasHtml += `<div class="voo-data-row"><span class="voo-data-label">📍 De</span><span class="voo-data-val">${origemLabel}</span></div>`;
-    if(destinoLabel) datasHtml += `<div class="voo-data-row"><span class="voo-data-label">📍 Para</span><span class="voo-data-val">${destinoLabel}</span></div>`;
-
-    // Tipo de transporte badge
-    const tipoHtml = (tipoNome && !nome.includes('voo'))
-      ? `<span class="voo-num">${icon} ${tipoNome}</span>` : '';
-
-    // Fallback se nenhum campo preenchido
-    if(!datasHtml && t.due_date) {
-      datasHtml = `<div class="voo-data-row"><span class="voo-data-label">📅 Data</span><span class="voo-data-val">${tsDate(t.due_date)}</span></div>`;
-    }
-
-  const nomeClean = t.name.replace(/^(VOO|TREM|CARRO)\s*[-–]\s*/i, '');
-  return `<div class="voo-card ${done?'ok':'pend'}" style="animation-delay:${i*0.04}s">
-    <div class="voo-icon">${icon}</div>
-    <div class="voo-info">
-      <div class="voo-name">${nomeClean}</div>
-      ${tipoHtml ? `<div class="voo-nums">${tipoHtml}</div>` : ''}
-      <div class="voo-datas">${datasHtml}</div>
-    </div>
-    <div class="voo-badge ${done?'badge-ok':'badge-pend'}">${done?'Confirmado':'Pendente'}</div>
-  </div>`;
+  return `<div class="items-grid">${rows}</div>`;
 }
 
-// ── Main sync ─────────────────────────────────────────────────────────────────
-async function syncClickUp(){
+// ═══════════════════════════════════════════════════════
+// RENDER: PENDÊNCIAS
+// ═══════════════════════════════════════════════════════
+
+function renderPending(allTasks) {
+  // Filtra tarefas que precisam de ação
+  const pendingStatuses = ['pesquisando','researching','booking in progress','booking','sugestão','potential idea','to do','not started'];
+  const pending = allTasks.filter(t => {
+    const s = (t.status?.status || '').toLowerCase();
+    return pendingStatuses.some(p => s.includes(p));
+  });
+
+  // Filtra apenas as que têm prioridade urgent/high ou são de deslocamento/hospedagem
+  const important = pending.filter(t => {
+    const p = t.priority?.priority;
+    const list = (t._listName || t.list?.name || '').toLowerCase();
+    return p === 'urgent' || p === 'high' || list.includes('aereo') || list.includes('hospedagem') || list.includes('transfer');
+  });
+
+  // Ordena por prioridade
+  const order = { urgent: 0, high: 1, normal: 2, low: 3 };
+  important.sort((a, b) => (order[a.priority?.priority] ?? 3) - (order[b.priority?.priority] ?? 3));
+
+  document.getElementById('pending-count').textContent = important.length;
+  document.getElementById('stat-pending').textContent = important.length;
+
+  if (!important.length) {
+    return '<div class="loading-block">🎉 Nenhuma pendência urgente encontrada!</div>';
+  }
+
+  const rows = important.map((task, i) => {
+    const p = task.priority?.priority;
+    const urgClass = p === 'urgent' ? 'u-critical' : p === 'high' ? 'u-high' : 'u-normal';
+    const urgLabel = p === 'urgent' ? 'Urgente' : p === 'high' ? 'Alta prioridade' : 'Normal';
+    const listName = task._listName || task.list?.name || '';
+    const url = task.url || '#';
+
+    return `
+      <div class="pending-row">
+        <div class="pending-num">${String(i+1).padStart(2,'0')}</div>
+        <div>
+          <div class="pending-name">${task.name}</div>
+          <div class="pending-note">${task.description ? task.description.substring(0,120) + (task.description.length > 120 ? '...' : '') : listName}</div>
+        </div>
+        <span class="pending-urgency ${urgClass}">${urgLabel}</span>
+        <a class="pending-link" href="${url}" target="_blank">↗ ClickUp</a>
+      </div>`;
+  }).join('');
+
+  return `<div class="pending-grid">${rows}</div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// MAIN LOAD
+// ═══════════════════════════════════════════════════════
+
+async function loadAllData() {
   const token = getToken();
-  if(!token){ alert('Cole seu ClickUp API Token no campo acima!'); return; }
-  saveToken(token);
+  if (!token) {
+    setSyncStatus('Configure seu API Token para sincronizar', 'error');
+    document.getElementById('config-panel').classList.add('visible');
+    // Mostra conteúdo estático de fallback
+    renderStaticFallback();
+    return;
+  }
 
-  const btn = document.getElementById('btnSync');
-  const info = document.getElementById('syncInfo');
-  const err = document.getElementById('errBox');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spin">↻</span> Sincronizando...';
-  info.textContent = 'Buscando dados do ClickUp...';
-  err.style.display = 'none';
+  setSyncStatus('Sincronizando com ClickUp...', 'loading');
+  document.getElementById('sync-btn').disabled = true;
 
   try {
-    const [aereo, transfer, hospBCN, hospROM, hospAML, hospTOS, hospPAR,
-           docs, roupas, saude, tech, dinheiro, aeroporto] = await Promise.all([
-      fetchListDetailed(LISTS.aereo, token),
-      fetchListDetailed(LISTS.transfer, token),
-      fetchList(LISTS.hospBCN, token),
-      fetchList(LISTS.hospROM, token),
-      fetchList(LISTS.hospAML, token),
-      fetchList(LISTS.hospTOS, token),
-      fetchList(LISTS.hospPAR, token),
-      fetchList(LISTS.docs, token),
-      fetchList(LISTS.roupas, token),
-      fetchList(LISTS.saude, token),
-      fetchList(LISTS.tech, token),
-      fetchList(LISTS.dinheiro, token),
-      fetchList(LISTS.aeroporto, token),
+    // Busca paralela de todas as listas
+    const [flightTasks, transferTasks, bcnTasks, romTasks, tscTasks, parTasks] = await Promise.all([
+      getTasks(LISTS.aereo),
+      getTasks(LISTS.transfers),
+      getTasks(LISTS.bcnItinerary),
+      getTasks(LISTS.romItinerary),
+      getTasks(LISTS.tscItinerary),
+      getTasks(LISTS.parItinerary),
     ]);
 
-    // Hospedagem
-    renderHosp('hosp-bcn', hospBCN);
-    renderHosp('hosp-rom', hospROM);
-    renderHosp('hosp-aml', hospAML);
-    renderHosp('hosp-tos', hospTOS);
-    renderHosp('hosp-par', hospPAR);
+    // Renderiza voos
+    document.getElementById('flights-container').innerHTML = renderFlights(flightTasks);
+    document.getElementById('stat-voos').textContent = flightTasks.length;
 
-    // Status bar hospedagem
-    const allHosp = [...hospBCN,...hospROM,...hospAML,...hospTOS,...hospPAR];
-    const hospDone = allHosp.filter(isDone).length;
-    document.getElementById('st3').textContent = hospDone === allHosp.length
-      ? 'Todas hospedagens confirmadas ✓'
-      : `${allHosp.length - hospDone} hospedagens a confirmar`;
+    // Conta confirmados
+    const allTasks = [...flightTasks, ...transferTasks, ...bcnTasks, ...romTasks, ...tscTasks, ...parTasks];
+    const confirmedCount = allTasks.filter(t => {
+      const s = (t.status?.status || '').toLowerCase();
+      return ['confirmado','confirmed','complete','done','visited'].some(x => s.includes(x));
+    }).length;
+    document.getElementById('stat-confirmed').textContent = confirmedCount;
 
-    // Voos
-    console.log('aereo:', aereo.length, 'tasks, transfer:', transfer.length, 'tasks');
-    renderVoos(aereo, transfer);
+    // Renderiza itinerários
+    document.getElementById('bcn-container').innerHTML = renderItinerary(bcnTasks);
+    document.getElementById('rom-container').innerHTML = renderItinerary(romTasks);
+    document.getElementById('tsc-container').innerHTML = renderItinerary(tscTasks);
+    document.getElementById('par-container').innerHTML = renderItinerary(parTasks);
 
-    // Checklists
-    renderCheck('docs', docs, '#e8412a');
-    renderCheck('roupas', roupas, '#c47d2a');
-    renderCheck('saude', saude, '#2e8b6b');
-    renderCheck('tech', tech, '#3a6fa8');
-    renderCheck('din', dinheiro, '#8b4fa8');
-    renderCheck('aero', aeroporto, '#c9973a');
+    // Pendências — busca em todas as tarefas já carregadas
+    const allWithList = [
+      ...flightTasks.map(t => ({ ...t, _listName: 'Aereo' })),
+      ...transferTasks.map(t => ({ ...t, _listName: 'Transfers' })),
+      ...bcnTasks.map(t => ({ ...t, _listName: 'Barcelona' })),
+      ...romTasks.map(t => ({ ...t, _listName: 'Roma' })),
+      ...tscTasks.map(t => ({ ...t, _listName: 'Toscana' })),
+      ...parTasks.map(t => ({ ...t, _listName: 'Paris' })),
+    ];
+    document.getElementById('pending-container').innerHTML = renderPending(allWithList);
 
-    // Checklist status bar
-    const allCl = [...docs,...roupas,...saude,...tech,...dinheiro,...aeroporto];
-    const clDone = allCl.filter(isDone).length;
-    document.getElementById('st4').textContent = `Checklist ${Math.round(clDone/allCl.length*100)}% concluído`;
+    setSyncStatus(`Sincronizado — ${allTasks.length} tarefas carregadas`, 'ok');
 
-    // Badge e labels
-    const now = new Date().toLocaleString('pt-BR');
-    document.getElementById('syncLabel').textContent = `sincronizado em ${now}`;
-    document.getElementById('badgeText').innerHTML = `✅ Dados atualizados do ClickUp em <strong>${now}</strong>`;
-    document.getElementById('footerDate').textContent = `Sincronizado com ClickUp em ${now}`;
-    info.textContent = `✓ Sincronizado com sucesso!`;
+  } catch (err) {
+    console.error(err);
+    if (err.message === 'NO_TOKEN') {
+      setSyncStatus('Token não configurado', 'error');
+      document.getElementById('config-panel').classList.add('visible');
+    } else {
+      setSyncStatus(`Erro: ${err.message}. Verifique o token ou o proxy CORS.`, 'error');
+      showErrorFallback(err.message);
+    }
+    renderStaticFallback();
+  }
 
-  } catch(e){
-    err.style.display = 'block';
-    err.textContent = `❌ Erro ao conectar com o ClickUp: ${e.message}. Verifique seu token e tente novamente.`;
-    info.textContent = 'Erro na sincronização';
-  } finally {
-    btn.disabled = false;
-    btn.innerHTML = '↻ Sincronizar';
+  document.getElementById('sync-btn').disabled = false;
+}
+
+function showErrorFallback(msg) {
+  const errHTML = `<div class="error-block"><strong>⚠ Erro de conexão</strong>A API do ClickUp não pôde ser acessada. Verifique seu token e a conexão. Erro: ${msg}</div>`;
+  ['flights-container','bcn-container','rom-container','tsc-container','par-container','pending-container'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el.querySelector('.loading-block')) el.innerHTML = errHTML;
+  });
+}
+
+// Fallback estático quando não há token (dados hardcoded da última sincronização)
+function renderStaticFallback() {
+  document.getElementById('stat-voos').textContent = '8';
+  document.getElementById('stat-confirmed').textContent = '7';
+  document.getElementById('stat-pending').textContent = '14';
+  document.getElementById('pending-count').textContent = '14';
+
+  document.getElementById('flights-container').innerHTML = `
+    <div class="error-block">
+      <strong>📋 Dados offline</strong>
+      Configure seu API Token para ver os dados em tempo real do ClickUp.
+      Os dados abaixo são a última versão salva.
+    </div>
+    <div class="flights-grid">
+      ${[
+        ['22','Mai','MAO → LIS → BCN','XWQLJW','TP 52 + TP1036','22 Mai 23h00','Team Rebeca','TAP','confirmado'],
+        ['26','Mai','BCN → ROM','R6QM4U','FR6973','26 Mai 06h15','ALL','Ryanair','confirmado'],
+        ['03','Jun','MIL → PAR','OG2FSD','TO3941','03 Jun 14h30','ALL','Transavia','confirmado'],
+        ['08','Jun','PAR → BCN','YMJJBS','AF1548','08 Jun 15h20','Team Rebeca','Air France','confirmado'],
+        ['08','Jun','PAR → BCN','DRZLTR','VY8249','08 Jun 13h45','Team Mari','Vueling','confirmado'],
+        ['08','Jun','BCN → LIS → MAO','XWQLJW','TP1041 + TP51','08 Jun 19h20','Team Rebeca','TAP','confirmado'],
+      ].map(([day,mon,route,res,voo,hora,team,comp,status]) => `
+        <div class="flight-card">
+          <div class="flight-date-col">
+            <div class="flight-day">${day}</div>
+            <div class="flight-month">${mon}</div>
+          </div>
+          <div class="flight-body">
+            <div class="flight-route">${route.split('→').map(s=>s.trim()).join(' <span class="flight-arrow">→</span> ')}</div>
+            <div class="flight-meta">
+              <span class="flight-meta-item">🎫 <strong>${res}</strong></span>
+              <span class="flight-meta-item">✈ <strong>${voo}</strong></span>
+              <span class="flight-meta-item">🕐 ${hora}</span>
+            </div>
+            <div class="flight-tags">
+              <span class="badge badge-confirmed">✓ Confirmado</span>
+              <span class="badge badge-team">${team}</span>
+              <span class="badge badge-urgent">${comp}</span>
+            </div>
+          </div>
+        </div>`).join('')}
+    </div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// UI INTERACTIONS
+// ═══════════════════════════════════════════════════════
+
+function toggleFlight(card) {
+  const detail = card.nextElementSibling;
+  if (!detail || !detail.classList.contains('flight-detail')) return;
+  const isOpen = card.classList.contains('expanded');
+  document.querySelectorAll('.flight-card.expanded').forEach(c => {
+    c.classList.remove('expanded');
+    c.nextElementSibling?.classList.remove('open');
+  });
+  if (!isOpen) {
+    card.classList.add('expanded');
+    detail.classList.add('open');
   }
 }
+
+// Nav active on scroll
+window.addEventListener('scroll', () => {
+  let current = '';
+  document.querySelectorAll('[id]').forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  document.querySelectorAll('.nav-tab').forEach(t => {
+    t.classList.toggle('active', t.getAttribute('href') === '#' + current);
+  });
+});
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  loadAllData();
+  // Auto-refresh a cada 5 minutos
+  setInterval(loadAllData, 5 * 60 * 1000);
+});
 </script>
+
 </body>
 </html>
